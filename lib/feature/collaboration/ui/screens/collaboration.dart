@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
@@ -6,6 +7,7 @@ import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/choose_widget.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
+import 'package:mem_admain/feature/collaboration/logic/cubit/creat_meeting_cubit.dart';
 import 'package:mem_admain/feature/collaboration/ui/widgets/hour_pick.dart';
 
 import '../widgets/data_pick.dart';
@@ -84,7 +86,9 @@ class CollaborationScreen extends StatelessWidget {
                     backgroundColor: AppPallete.lightPastelBlue,
                     buttonText: "ارسال الموعد",
                     textStyle: AppStyles.font20Black(context),
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<CreatMeetingCubit>().emitCreatMeetingState();
+                    },
                   ),
                   SizedBox(
                     height: 30.h,
