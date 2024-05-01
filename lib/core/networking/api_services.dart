@@ -12,17 +12,16 @@ part 'api_services.g.dart';
 
 @RestApi(baseUrl: ApiConstants.apiBaseURL)
 abstract class ApiService {
-
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
   @POST(ApiConstants.loginEndpoint)
   Future<LoginResponseBody> login(
     @Body() LoginRequestBody loginRequestBody,
   );
+
   @POST(ApiConstants.creatMeeting)
-  @Header('Authorization: Bearer vc')
   Future<MeetingResponseBody> creatMeeting(
-    @Header('Authorization')  String token,
+    @Header('Authorization') String token,
     @Body() MeetingRequestBody meetingRequestBody,
   );
 }

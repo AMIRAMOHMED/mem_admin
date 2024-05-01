@@ -74,9 +74,7 @@ class CollaborationScreen extends StatelessWidget {
                   SizedBox(
                     height: 15.h,
                   ),
-                  UserSelectionBox(
-                    onSelectionChanged: (String) {},
-                  ),
+                  const UserSelectionBox(),
                   SizedBox(
                     height: 30.h,
                   ),

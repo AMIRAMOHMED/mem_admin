@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mem_admain/core/app/cubit/selection_user_cubit.dart';
 import 'package:mem_admain/core/di/dependcy_injection.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/feature/collaboration/logic/cubit/creat_meeting_cubit.dart';
@@ -30,8 +31,15 @@ class AppRoutes {
         );
       case collaborationScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<CreatMeetingCubit>(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<CreatMeetingCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => SelectionUserCubit(),
+              ),
+            ],
             child: const CollaborationScreen(),
           ),
         );

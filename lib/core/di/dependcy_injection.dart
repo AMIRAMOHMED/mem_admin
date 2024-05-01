@@ -21,4 +21,7 @@ Future<void> setupGetIt() async {
   //creat meeting
   getIt.registerLazySingleton<CreetMeetingRepo>(() => CreetMeetingRepo(getIt()));
   getIt.registerFactory<CreatMeetingCubit>(() => CreatMeetingCubit(getIt()));
+
+
+
 }
