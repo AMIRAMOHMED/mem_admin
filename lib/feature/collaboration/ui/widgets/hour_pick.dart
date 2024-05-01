@@ -1,10 +1,11 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
 
 class PickHourWidget extends StatefulWidget {
-  const PickHourWidget({Key? key}) : super(key: key);
+  final Function(TimeOfDay selecteddTime) onPickedHour;
+
+  const PickHourWidget({super.key, required this.onPickedHour});
 
   @override
   State<PickHourWidget> createState() => _PickHourWidgetState();
@@ -24,8 +25,6 @@ class _PickHourWidgetState extends State<PickHourWidget> {
     return SizedBox(
       height: 80,
       width: 360,
-      
-
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppPallete.lightPastelBlue,
@@ -41,6 +40,7 @@ class _PickHourWidgetState extends State<PickHourWidget> {
           if (pickedTime != null) {
             setState(() {
               selectedTime = pickedTime;
+              widget.onPickedHour(selectedTime);
             });
           }
         },

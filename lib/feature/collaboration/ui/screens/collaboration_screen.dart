@@ -12,8 +12,26 @@ import 'package:mem_admain/feature/collaboration/ui/widgets/hour_pick.dart';
 
 import '../widgets/data_pick.dart';
 
-class CollaborationScreen extends StatelessWidget {
+class CollaborationScreen extends StatefulWidget {
   const CollaborationScreen({super.key});
+
+  @override
+  State<CollaborationScreen> createState() => _CollaborationScreenState();
+}
+
+late TextEditingController meetingName;
+late TextEditingController urlOfMeeting;
+String pickedData = "";
+TimeOfDay selectedTime = "" as TimeOfDay;
+
+class _CollaborationScreenState extends State<CollaborationScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    meetingName = context.read<CreatMeetingCubit>().meetingName;
+    urlOfMeeting = context.read<CreatMeetingCubit>().urlOfMeeting;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +46,19 @@ class CollaborationScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const PickTime(),
+                  PickTime(
+                    onPickedData: (pickedUserData) {
+                      pickedData = pickedUserData;
+                    },
+                  ),
                   SizedBox(
                     height: 15.h,
                   ),
-                  const PickHourWidget(),
+                  PickHourWidget(
+                    onPickedHour: (time) {
+                      selectedTime = time;
+                    },
+                  ),
                   SizedBox(
                     height: 15.h,
                   ),
@@ -43,6 +69,7 @@ class CollaborationScreen extends StatelessWidget {
                   TextFormField(
                     style: AppStyles.font13Black(context),
                     textAlign: TextAlign.right,
+                    controller: meetingName,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: AppPallete.white,
@@ -60,6 +87,7 @@ class CollaborationScreen extends StatelessWidget {
                   TextFormField(
                     style: AppStyles.font13Black(context),
                     textAlign: TextAlign.right,
+                    controller: urlOfMeeting,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: AppPallete.white,
@@ -85,7 +113,8 @@ class CollaborationScreen extends StatelessWidget {
                     buttonText: "ارسال الموعد",
                     textStyle: AppStyles.font20Black(context),
                     onPressed: () {
-                      context.read<CreatMeetingCubit>().emitCreatMeetingState();
+                      context.read<CreatMeetingCubit>().emitCreatMeetingState(
+                          context, pickedData, selectedTime);
                     },
                   ),
                   SizedBox(

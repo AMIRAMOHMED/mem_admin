@@ -4,7 +4,7 @@ import 'package:mem_admain/core/app/cubit/selection_user_cubit.dart';
 import 'package:mem_admain/core/di/dependcy_injection.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/feature/collaboration/logic/cubit/creat_meeting_cubit.dart';
-import 'package:mem_admain/feature/collaboration/ui/screens/collaboration.dart';
+import 'package:mem_admain/feature/collaboration/ui/screens/collaboration_screen.dart';
 import 'package:mem_admain/feature/home/ui/screens/home_screen.dart';
 import 'package:mem_admain/feature/login/logic/cubit/login_cubit.dart';
 import 'package:mem_admain/feature/login/ui/screen/login_screen.dart';

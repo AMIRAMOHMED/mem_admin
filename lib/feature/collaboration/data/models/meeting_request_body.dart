@@ -15,7 +15,7 @@ class MeetingRequestBody {
   MeetingRequestBody({
     required this.name,
     required this.url,
-    required this.forWho, // Updated variable name here too
+    required this.forWho, 
     required this.dateTime,
     required this.message,
     this.selectedUserIds = const [],

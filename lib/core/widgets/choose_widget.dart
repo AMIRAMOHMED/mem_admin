@@ -3,6 +3,7 @@ import 'package:mem_admain/core/app/cubit/selection_user_cubit.dart';
 import 'package:mem_admain/core/app/cubit/selection_user_state.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
+import 'package:mem_admain/core/theme/app_style.dart';
 
 class UserSelectionBox extends StatelessWidget {
   const UserSelectionBox({super.key});
@@ -10,6 +11,7 @@ class UserSelectionBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SelectionUserCubit, SelectionUserState>(
+
       builder: (context, state) {
         return Align(
           alignment: Alignment.centerRight,
@@ -20,68 +22,39 @@ class UserSelectionBox extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Expanded(
-                  child: ListTile(
-                    title: const Text(
-                      "متلعثم",
-                      style: TextStyle(fontSize: 13),
-                    ),
-                    leading: Radio(
-                      value: "stuttered",
-                      groupValue: state.maybeWhen(
-                        success: (option) => option,
-                        orElse: () => null,
-                      ),
-                      onChanged: (value) {
-                        context.read<SelectionUserCubit>().pickChoose(context, value.toString());
-                      },
-                      activeColor: Colors.black,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ListTile(
-                    title: const Text(
-                      "ذو صلة",
-                      style: TextStyle(fontSize: 13),
-                    ),
-                    leading: Radio(
-                      activeColor: Colors.black,
-                      value: "related",
-                      groupValue: state.maybeWhen(
-                        success: (option) => option,
-                        orElse: () => null,
-                      ),
-                      onChanged: (value) {
-                        context.read<SelectionUserCubit>().pickChoose(context, value.toString());
-                      },
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ListTile(
-                    title: const Text(
-                      "الكل",
-                      style: TextStyle(fontSize: 13),
-                    ),
-                    leading: Radio(
-                      activeColor: Colors.black,
-                      value: "all",
-                      groupValue: state.maybeWhen(
-                        success: (option) => option,
-                        orElse: () => null,
-                      ),
-                      onChanged: (value) {
-                        context.read<SelectionUserCubit>().pickChoose(context, value.toString());
-                      },
-                    ),
-                  ),
-                ),
+                buildRadioListTile(context, state, "stutterer", "متلعثم"),
+                buildRadioListTile(context, state, "related", "ذو صلة"),
+                buildRadioListTile(context, state, "all", "الكل"),
               ],
             ),
           ),
         );
       },
+    );
+  }
+
+  Widget buildRadioListTile(BuildContext context, SelectionUserState state,
+      String value, String title) {
+    return Expanded(
+      child: ListTile(
+        title: Text(
+          title,
+          style: AppStyles.font13Black(context),
+        ),
+        leading: Radio(
+          activeColor: AppPallete.black,
+          value: value,
+          groupValue: state.maybeWhen(
+            success: (option) => option,
+            orElse: () => null,
+          ),
+          onChanged: (newValue) {
+            context
+                .read<SelectionUserCubit>()
+                .pickChoose(context, newValue.toString());
+          },
+        ),
+      ),
     );
   }
 }

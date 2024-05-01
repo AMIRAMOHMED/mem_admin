@@ -67,7 +67,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'notifications/new',
+              'meetings/new',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -8,17 +8,17 @@ part of 'meeting_response_body.dart';
 
 MeetingResponseBody _$MeetingResponseBodyFromJson(Map<String, dynamic> json) =>
     MeetingResponseBody(
+      dateTime: json['dateTime'] as String,
       id: json['id'] as String,
-      message: json['message'] as String,
-      forValue: json['forValue'] as String,
-      userId: json['userId'] as String,
+      url: json['url'] as String,
+      name: json['name'] as String,
     );
 
 Map<String, dynamic> _$MeetingResponseBodyToJson(
         MeetingResponseBody instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'message': instance.message,
-      'forValue': instance.forValue,
-      'userId': instance.userId,
+      'url': instance.url,
+      'dateTime': instance.dateTime,
+      'name': instance.name,
     };

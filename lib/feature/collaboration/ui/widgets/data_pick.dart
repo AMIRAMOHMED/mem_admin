@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -6,7 +7,9 @@ import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class PickTime extends StatefulWidget {
-  const PickTime({super.key});
+  final Function(String) onPickedData;
+
+  const PickTime({super.key, required this.onPickedData});
 
   @override
   State<PickTime> createState() => _PickTimeState();
@@ -14,11 +17,16 @@ class PickTime extends StatefulWidget {
 
 class _PickTimeState extends State<PickTime> {
   String _selectedDate = '';
+    String _selectedDateCubit = '';
+
 
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
     setState(() {
       if (args.value is DateTime) {
         _selectedDate = DateFormat('dd/MM/yyyy').format(args.value);
+        _selectedDateCubit=args.value.toString();
+
+        widget.onPickedData(_selectedDateCubit);
       }
     });
   }
@@ -43,8 +51,9 @@ class _PickTimeState extends State<PickTime> {
                 Align(
                   alignment: Alignment.topRight,
                   child: Text(
-                    _selectedDate.isEmpty?
-                    ' اختار يوم الاجتماع ':"تم تحديد التاريخ: $_selectedDate",
+                    _selectedDate.isEmpty
+                        ? ' اختار يوم الاجتماع '
+                        : "تم تحديد التاريخ: $_selectedDate",
                     style: AppStyles.font20Black(context),
                   ),
                 ),

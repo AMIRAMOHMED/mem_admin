@@ -1,19 +1,19 @@
 import 'package:json_annotation/json_annotation.dart';
 
 part 'meeting_response_body.g.dart';
+
 @JsonSerializable()
 class MeetingResponseBody {
   String id;
-  String message;
-  String forValue;
-  String userId;
+  String url;
+  String dateTime;
+  String name;
 
-  MeetingResponseBody({
-    required this.id,
-    required this.message,
-    required this.forValue,
-    required this.userId,
-  });
+  MeetingResponseBody(
+      {required this.dateTime,
+      required this.id,
+      required this.url,
+      required this.name});
 
   factory MeetingResponseBody.fromJson(Map<String, dynamic> json) =>
       _$MeetingResponseBodyFromJson(json);
