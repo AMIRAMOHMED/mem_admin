@@ -1,6 +1,8 @@
-  const String loginScreen = '/';
-   const String homeScreen = '/homeScreen';
-  const String groupChatScreen = '/groupChatScreen';
- const String exerciseScreen = '/exerciseScreen';
- const String  collaborationScreen = '/collaborationScreen';
- const String  notificationScreen = '/notificationScreen';
+const String loginScreen = '/';
+const String homeScreen = '/homeScreen';
+const String groupChatScreen = '/groupChatScreen';
+const String exerciseScreen = '/exerciseScreen';
+const String meetingScreen = '/meetingScreen';
+const String allMeetingScreen = '/allMeetingScreen';
+
+const String notificationScreen = '/notificationScreen';

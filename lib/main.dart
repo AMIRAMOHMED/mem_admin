@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mem_admain/core/app/bloc.dart';
 import 'package:mem_admain/core/di/dependcy_injection.dart';
 import 'package:mem_admain/core/routing/app_routing.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
@@ -13,8 +15,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   await SharedPref().instantiatePreferences();
   await setupGetIt();
+   Bloc.observer = AppBlocObserver();
+
 
   runApp(const MemAdmain());
 }

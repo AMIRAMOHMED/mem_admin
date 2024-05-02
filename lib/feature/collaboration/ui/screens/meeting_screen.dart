@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mem_admain/core/extension/context_extension.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
+import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/choose_widget.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
-import 'package:mem_admain/feature/collaboration/logic/cubit/creat_meeting_cubit.dart';
+import 'package:mem_admain/feature/collaboration/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
 import 'package:mem_admain/feature/collaboration/ui/widgets/hour_pick.dart';
 
 import '../widgets/data_pick.dart';
 
-class CollaborationScreen extends StatefulWidget {
-  const CollaborationScreen({super.key});
+class MeetingScreen extends StatefulWidget {
+  const MeetingScreen({super.key});
 
   @override
-  State<CollaborationScreen> createState() => _CollaborationScreenState();
+  State<MeetingScreen> createState() => _MeetingScreenState();
 }
 
 late TextEditingController meetingName;
 late TextEditingController urlOfMeeting;
 String pickedData = "";
-TimeOfDay selectedTime = "" as TimeOfDay;
+TimeOfDay selectedTime = TimeOfDay.now();
 
-class _CollaborationScreenState extends State<CollaborationScreen> {
+class _MeetingScreenState extends State<MeetingScreen> {
   @override
   void initState() {
     super.initState();
@@ -46,6 +48,17 @@ class _CollaborationScreenState extends State<CollaborationScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  AppTextButton(
+                    buttonHeight: 80.h,
+                    borderRadius: 40,
+                    backgroundColor: AppPallete.lightPastelBlue,
+                    buttonText: " عرض جميع الاجتماعات ",
+                    textStyle: AppStyles.font20Black(context),
+                    onPressed: () {
+
+                      context.pushReplacementNamed(allMeetingScreen);
+                    },
+                  ),
                   PickTime(
                     onPickedData: (pickedUserData) {
                       pickedData = pickedUserData;
@@ -115,6 +128,8 @@ class _CollaborationScreenState extends State<CollaborationScreen> {
                     onPressed: () {
                       context.read<CreatMeetingCubit>().emitCreatMeetingState(
                           context, pickedData, selectedTime);
+
+                          context.pushReplacementNamed(allMeetingScreen);
                     },
                   ),
                   SizedBox(
@@ -127,5 +142,13 @@ class _CollaborationScreenState extends State<CollaborationScreen> {
         ),
       ),
     );
+
   }
+   @override
+void dispose() {
+  super.dispose();
+  meetingName.dispose();
+  urlOfMeeting.dispose();
+
+}
 }

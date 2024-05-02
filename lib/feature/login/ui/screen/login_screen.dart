@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
@@ -97,7 +96,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     textStyle: AppStyles.font24Blue(context),
                   ),
                   const LoginBlocListener(),
-                
                 ],
               ),
             ),
@@ -105,5 +103,13 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    emailController.dispose();
+    passwordController.dispose();
   }
 }

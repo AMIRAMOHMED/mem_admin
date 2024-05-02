@@ -1,10 +1,9 @@
 class ApiConstants {
-
   static const String apiBaseURL = 'https://mem.hossamohsen.me/';
   static const String loginEndpoint = 'auth/signin/password';
-   static const String creatMeeting =  "meetings/new";
+  static const String creatMeeting = "meetings/new";
+  static const String getAllMeetings = "meetings/all";
 }
-
 
 class ApiErrors {
   static const String badRequestError = "badRequestError";

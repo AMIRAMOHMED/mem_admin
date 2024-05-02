@@ -8,12 +8,19 @@ class MeetingResponseBody {
   String url;
   String dateTime;
   String name;
+ @JsonKey(name: 'for')
+  String forWho; 
 
   MeetingResponseBody(
       {required this.dateTime,
       required this.id,
       required this.url,
-      required this.name});
+      required this.name,
+      required this.forWho,
+
+
+      
+      });
 
   factory MeetingResponseBody.fromJson(Map<String, dynamic> json) =>
       _$MeetingResponseBodyFromJson(json);

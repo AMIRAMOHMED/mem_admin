@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mem_admain/core/networking/dio_factroy.dart';
 import 'package:mem_admain/feature/collaboration/data/repo/creat_meeting_repo.dart';
-import 'package:mem_admain/feature/collaboration/logic/cubit/creat_meeting_cubit.dart';
+import 'package:mem_admain/feature/collaboration/data/repo/get_all_meetings_repo.dart';
+import 'package:mem_admain/feature/collaboration/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
+import 'package:mem_admain/feature/collaboration/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/login/data/repository/login_repo.dart';
 import 'package:mem_admain/feature/login/logic/cubit/login_cubit.dart';
 
@@ -19,9 +21,15 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
 
   //creat meeting
-  getIt.registerLazySingleton<CreetMeetingRepo>(() => CreetMeetingRepo(getIt()));
+  getIt
+      .registerLazySingleton<CreetMeetingRepo>(() => CreetMeetingRepo(getIt()));
+
   getIt.registerFactory<CreatMeetingCubit>(() => CreatMeetingCubit(getIt()));
 
+  //get all meeting
 
+  getIt.registerLazySingleton<GetAllMeetingsRepo>(
+      () => GetAllMeetingsRepo(getIt()));
 
+  getIt.registerFactory<GetAllMeetingCubit>(() => GetAllMeetingCubit(getIt()));
 }

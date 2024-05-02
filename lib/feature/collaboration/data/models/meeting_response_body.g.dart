@@ -12,6 +12,7 @@ MeetingResponseBody _$MeetingResponseBodyFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       url: json['url'] as String,
       name: json['name'] as String,
+      forWho: json['for'] as String,
     );
 
 Map<String, dynamic> _$MeetingResponseBodyToJson(
@@ -21,4 +22,5 @@ Map<String, dynamic> _$MeetingResponseBodyToJson(
       'url': instance.url,
       'dateTime': instance.dateTime,
       'name': instance.name,
+      'for': instance.forWho,
     };

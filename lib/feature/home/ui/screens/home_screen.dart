@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                 text: "القوائم",
                 color: AppPallete.lightPastelBlue,
                 onTap: () {
-                  context.pushName(collaborationScreen);
+                  context.pushName(meetingScreen);
                 },
               ),
               SizedBox(
