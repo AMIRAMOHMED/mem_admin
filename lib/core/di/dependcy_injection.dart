@@ -6,7 +6,9 @@ import 'package:mem_admain/feature/collaboration/data/repo/get_all_meetings_repo
 import 'package:mem_admain/feature/collaboration/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
 import 'package:mem_admain/feature/collaboration/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/login/data/repository/login_repo.dart';
-import 'package:mem_admain/feature/login/logic/cubit/login_cubit.dart';
+import 'package:mem_admain/feature/login/data/repository/vaildate_token_repo.dart';
+import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_cubit.dart';
+import 'package:mem_admain/feature/login/logic/login_cubit/login_cubit.dart';
 
 import '../networking/api_services.dart';
 
@@ -20,6 +22,15 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
 
+  //check token
+
+  getIt.registerLazySingleton<VaildateTokenRepo>(
+      () => VaildateTokenRepo(getIt()));
+  getIt.registerFactory<VaildCubit>(() => VaildCubit(getIt()));
+  
+  // getIt.registerFactory<RefreshTokenCubit>(() => RefreshTokenCubit(getIt()));
+
+
   //creat meeting
   getIt
       .registerLazySingleton<CreetMeetingRepo>(() => CreetMeetingRepo(getIt()));
@@ -32,4 +43,5 @@ Future<void> setupGetIt() async {
       () => GetAllMeetingsRepo(getIt()));
 
   getIt.registerFactory<GetAllMeetingCubit>(() => GetAllMeetingCubit(getIt()));
+
 }

@@ -4,17 +4,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/extension/context_extension.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
-import 'package:mem_admain/core/theme/app_style.dart';
-import 'package:mem_admain/feature/login/logic/login_cubit/login_state.dart';
+import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_cubit.dart';
+import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_state.dart';
 
-import '../../logic/login_cubit/login_cubit.dart';
 
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class SplashBlocListener extends StatelessWidget {
+  const SplashBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState>(
+    return BlocListener<VaildCubit, VaildState>(
       listenWhen: (previous, current) =>
           current is Loading || current is Success || current is Error,
       listener: (context, state) {
@@ -34,7 +33,7 @@ class LoginBlocListener extends StatelessWidget {
             context.pushReplacementNamed(homeScreen);
           },
           error: (error) {
-            setupErrorState(context, error);
+            context.pushReplacementNamed(loginScreen);
           },
         );
       },
@@ -42,32 +41,4 @@ class LoginBlocListener extends StatelessWidget {
     );
   }
 
-  void setupErrorState(BuildContext context, String error) {
-    context.pop();
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        icon: const Icon(
-          Icons.error,
-          color: Colors.red,
-          size: 32,
-        ),
-        content: Text(
-          error,
-          style: AppStyles.font24Blue(context),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              context.pop();
-            },
-            child: Text(
-              'Got it',
-              style: AppStyles.font20Black(context),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }

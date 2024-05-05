@@ -1,4 +1,6 @@
-const String loginScreen = '/';
+const String splashScreen = '/';
+const String loginScreen = '/loginScreen';
+
 const String homeScreen = '/homeScreen';
 const String groupChatScreen = '/groupChatScreen';
 const String exerciseScreen = '/exerciseScreen';

@@ -8,11 +8,14 @@ import 'package:mem_admain/feature/collaboration/logic/get%20all%20meeting%20cub
 
 class GetAllMeetingCubit extends Cubit<GetAllMeetingState> {
   final GetAllMeetingsRepo _getAllMeetingsRepo;
-  final _allMeetingsController = StreamController<List<GetAllMeetingResponseBody>>();
+  final _allMeetingsController =
+      StreamController<List<GetAllMeetingResponseBody>>();
 
-  Stream<List<GetAllMeetingResponseBody>> get allMeetingsStream => _allMeetingsController.stream;
+  Stream<List<GetAllMeetingResponseBody>> get allMeetingsStream =>
+      _allMeetingsController.stream;
 
-  GetAllMeetingCubit(this._getAllMeetingsRepo) : super(const GetAllMeetingState.initial()) {
+  GetAllMeetingCubit(this._getAllMeetingsRepo, )
+      : super(const GetAllMeetingState.initial()) {
     _fetchMeetings();
   }
 
@@ -21,20 +24,33 @@ class GetAllMeetingCubit extends Cubit<GetAllMeetingState> {
   void _fetchMeetings() async {
     emit(const GetAllMeetingState.loading());
 
-    final response = await _getAllMeetingsRepo.getAllMeetingsrepo("Bearer $token");
+    final response =
+        await _getAllMeetingsRepo.getAllMeetingsrepo("Bearer $token");
 
     response.when(
       success: (getAllMeetingModel) {
         _allMeetingsController.add(getAllMeetingModel);
         emit(GetAllMeetingState.success(getAllMeetingModel));
-            _fetchMeetings();
-
       },
       failure: (error) {
         emit(
             GetAllMeetingState.error(error: error.apiErrorModel.message ?? ''));
       },
     );
+  }
+
+  void deletMeeting(String id) async {
+    emit(const GetAllMeetingState.loading());
+
+    final response = await _getAllMeetingsRepo.deletMeeting("Bearer $token", id);
+
+    response.when(success: (deletmeetingresponsBody) {
+      _fetchMeetings();
+
+      emit(GetAllMeetingState.success(deletmeetingresponsBody));
+    }, failure: (error) {
+      emit(GetAllMeetingState.error(error: error.apiErrorModel.message ?? ''));
+    });
   }
 
   @override

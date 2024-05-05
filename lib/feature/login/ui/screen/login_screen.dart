@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
-import 'package:mem_admain/feature/login/logic/cubit/login_cubit.dart';
+import 'package:mem_admain/feature/login/logic/login_cubit/login_cubit.dart';
 import 'package:mem_admain/feature/login/ui/screen/login_bloc_listner.dart';
 
 import '../../../../core/theme/app_style.dart';

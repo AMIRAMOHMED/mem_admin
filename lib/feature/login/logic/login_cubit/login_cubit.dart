@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref_key.dart';
 import 'package:mem_admain/feature/login/data/models/login_request_body.dart';
 import 'package:mem_admain/feature/login/data/repository/login_repo.dart';
-import 'package:mem_admain/feature/login/logic/cubit/login_state.dart';
+import 'package:mem_admain/feature/login/logic/login_cubit/login_state.dart';
 
 import '../../../../core/sharedpre/shared_pref.dart';
 

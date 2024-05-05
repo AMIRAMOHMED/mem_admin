@@ -9,7 +9,7 @@ import 'package:mem_admain/feature/collaboration/ui/widgets/meeting_item.dart';
 import '../../../../core/widgets/loading_widget.dart';
 
 class AllMeetingScreen extends StatelessWidget {
-  const AllMeetingScreen({Key? key}) : super(key: key);
+  const AllMeetingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

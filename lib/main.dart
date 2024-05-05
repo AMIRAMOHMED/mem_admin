@@ -8,6 +8,8 @@ import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref_key.dart';
 import 'package:mem_admain/core/theme/app_theme.dart';
+import 'package:mem_admain/feature/home/ui/screens/home_screen.dart';
+import 'package:mem_admain/feature/splah/splah_screen.dart';
 import 'package:mem_admain/firebase_options.dart';
 
 void main() async {
@@ -34,10 +36,9 @@ class MemAdmain extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTthemeMode,
+      navigatorKey: navigator,
       onGenerateRoute: AppRoutes().onGenerateRoute,
-      initialRoute: SharedPref().getBoolean(PrefKeys.isLogin) == true
-          ? homeScreen
-          : loginScreen,
-    );
+
+initialRoute: splashScreen,    );
   }
 }

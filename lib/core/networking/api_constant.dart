@@ -1,8 +1,11 @@
 class ApiConstants {
   static const String apiBaseURL = 'https://mem.hossamohsen.me/';
   static const String loginEndpoint = 'auth/signin/password';
+  static const String vaildateToken = "auth/validate";
+  static const String refreshToken = "auth/refresh";
   static const String creatMeeting = "meetings/new";
   static const String getAllMeetings = "meetings/all";
+  static const String deleteMeeting = "meetings/";
 }
 
 class ApiErrors {

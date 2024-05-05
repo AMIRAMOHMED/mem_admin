@@ -1,3 +1,10 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "dart_data_class_generator.fromJson.enabled": true,
+    "dart_data_class_generator.toJson.enabled": true,
+    "files.exclude": {
+        "": true,
+        " **/*.g.dart\": true": true,
+        "\"**/*.freezed.dart\": true": true
+    }
 }
