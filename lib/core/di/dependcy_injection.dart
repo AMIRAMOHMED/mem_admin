@@ -9,6 +9,8 @@ import 'package:mem_admain/feature/login/data/repository/login_repo.dart';
 import 'package:mem_admain/feature/login/data/repository/vaildate_token_repo.dart';
 import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_cubit.dart';
 import 'package:mem_admain/feature/login/logic/login_cubit/login_cubit.dart';
+import 'package:mem_admain/feature/notification/data/repo/create_notification_repo.dart';
+import 'package:mem_admain/feature/notification/logic/cubit/notfication_cubit.dart';
 
 import '../networking/api_services.dart';
 
@@ -27,9 +29,8 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<VaildateTokenRepo>(
       () => VaildateTokenRepo(getIt()));
   getIt.registerFactory<VaildCubit>(() => VaildCubit(getIt()));
-  
-  // getIt.registerFactory<RefreshTokenCubit>(() => RefreshTokenCubit(getIt()));
 
+  // getIt.registerFactory<RefreshTokenCubit>(() => RefreshTokenCubit(getIt()));
 
   //creat meeting
   getIt
@@ -44,4 +45,9 @@ Future<void> setupGetIt() async {
 
   getIt.registerFactory<GetAllMeetingCubit>(() => GetAllMeetingCubit(getIt()));
 
+  //notification
+  getIt
+      .registerLazySingleton<NotificationRepo>(() => NotificationRepo(getIt()));
+
+  getIt.registerFactory<NotficationCubit>(() => NotficationCubit(getIt()));
 }

@@ -11,6 +11,7 @@ import 'package:mem_admain/feature/home/ui/screens/home_screen.dart';
 import 'package:mem_admain/feature/login/logic/login_cubit/login_cubit.dart';
 import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_cubit.dart';
 import 'package:mem_admain/feature/login/ui/screen/login_screen.dart';
+import 'package:mem_admain/feature/notification/logic/cubit/notfication_cubit.dart';
 import 'package:mem_admain/feature/notification/ui/screens/notification_screen.dart';
 import 'package:mem_admain/feature/splah/splah_screen.dart';
 
@@ -31,7 +32,15 @@ class AppRoutes {
         );
       case notificationScreen:
         return MaterialPageRoute(
-          builder: (_) => const NotificationScreen(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+            BlocProvider(
+              create: (context) => SelectionUserCubit(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<NotficationCubit>(),
+            ),
+          ], child: const NotificationScreen()),
         );
       case meetingScreen:
         return MaterialPageRoute(
@@ -39,9 +48,6 @@ class AppRoutes {
             providers: [
               BlocProvider(
                 create: (context) => getIt<CreatMeetingCubit>(),
-              ),
-              BlocProvider(
-                create: (context) => SelectionUserCubit(),
               ),
             ],
             child: const MeetingScreen(),

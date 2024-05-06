@@ -36,7 +36,7 @@ class CreatMeetingCubit extends Cubit<CreatMeetingState> {
           message: 'messge',
           selectedUserIds: []),
     );
-    print(respons);
+  
     respons.when(success: (meetingResponseBody) {
       final meetingResponseBodyR = meetingResponseBody;
 

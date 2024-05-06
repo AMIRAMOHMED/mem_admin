@@ -6,8 +6,10 @@ import 'package:mem_admain/feature/collaboration/data/models/meeting_request_bod
 import 'package:mem_admain/feature/collaboration/data/models/meeting_response_body.dart';
 import 'package:mem_admain/feature/login/data/models/login_request_body.dart';
 import 'package:mem_admain/feature/login/data/models/login_response_body.dart';
+import 'package:mem_admain/feature/login/data/models/set_firebase_it_request_body.dart';
 import 'package:mem_admain/feature/login/data/models/token_request_body.dart';
-import 'package:mem_admain/feature/login/data/models/token_vaildate_response_body.dart';
+import 'package:mem_admain/feature/notification/data/models/notification_request_body.dart';
+import 'package:mem_admain/feature/notification/data/models/notification_response_body.dart';
 import 'package:retrofit/http.dart';
 
 part 'api_services.g.dart';
@@ -31,6 +33,12 @@ abstract class ApiService {
   //   @Body() TokenRequestBody tokenRequestBody,
   // );
 
+  @POST(ApiConstants.setFireBaseId)
+  Future setFirebaseId(
+    @Header('Authorization') String token,
+    @Body() SetFireBaseIdBodyRequest setFireBaseIdBodyRequest,
+  );
+
   @POST(ApiConstants.creatMeeting)
   Future<MeetingResponseBody> creatMeeting(
     @Header('Authorization') String token,
@@ -42,10 +50,15 @@ abstract class ApiService {
     @Header('Authorization') String token,
   );
 
- @DELETE("${ApiConstants.deleteMeeting}{id}")
-Future<DeletMeetingResponsBody> deleteMeeting(
-  @Header('Authorization') String token,
-  @Path("id") String id,
-);
+  @DELETE("${ApiConstants.deleteMeeting}{id}")
+  Future<DeletMeetingResponsBody> deleteMeeting(
+    @Header('Authorization') String token,
+    @Path("id") String id,
+  );
 
+  @POST(ApiConstants.creatNotifications)
+  Future<NotificationResponseBody> createNotification(
+    @Header('Authorization') String token,
+    @Body() NotificationRequestModel notificationRequestModel,
+  );
 }

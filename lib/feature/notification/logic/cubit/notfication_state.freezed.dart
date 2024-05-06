@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'add_notfication_state.dart';
+part of 'notfication_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AddNotficationState<T> {
+mixin _$NotficationState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -69,17 +69,16 @@ mixin _$AddNotficationState<T> {
 }
 
 /// @nodoc
-abstract class $AddNotficationStateCopyWith<T, $Res> {
-  factory $AddNotficationStateCopyWith(AddNotficationState<T> value,
-          $Res Function(AddNotficationState<T>) then) =
-      _$AddNotficationStateCopyWithImpl<T, $Res, AddNotficationState<T>>;
+abstract class $NotficationStateCopyWith<T, $Res> {
+  factory $NotficationStateCopyWith(
+          NotficationState<T> value, $Res Function(NotficationState<T>) then) =
+      _$NotficationStateCopyWithImpl<T, $Res, NotficationState<T>>;
 }
 
 /// @nodoc
-class _$AddNotficationStateCopyWithImpl<T, $Res,
-        $Val extends AddNotficationState<T>>
-    implements $AddNotficationStateCopyWith<T, $Res> {
-  _$AddNotficationStateCopyWithImpl(this._value, this._then);
+class _$NotficationStateCopyWithImpl<T, $Res, $Val extends NotficationState<T>>
+    implements $NotficationStateCopyWith<T, $Res> {
+  _$NotficationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -96,7 +95,7 @@ abstract class _$$InitialImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<T, $Res>
-    extends _$AddNotficationStateCopyWithImpl<T, $Res, _$InitialImpl<T>>
+    extends _$NotficationStateCopyWithImpl<T, $Res, _$InitialImpl<T>>
     implements _$$InitialImplCopyWith<T, $Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl<T> _value, $Res Function(_$InitialImpl<T>) _then)
@@ -110,7 +109,7 @@ class _$InitialImpl<T> implements _Initial<T> {
 
   @override
   String toString() {
-    return 'AddNotficationState<$T>.initial()';
+    return 'NotficationState<$T>.initial()';
   }
 
   @override
@@ -197,7 +196,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   }
 }
 
-abstract class _Initial<T> implements AddNotficationState<T> {
+abstract class _Initial<T> implements NotficationState<T> {
   const factory _Initial() = _$InitialImpl<T>;
 }
 
@@ -210,7 +209,7 @@ abstract class _$$LoadingImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<T, $Res>
-    extends _$AddNotficationStateCopyWithImpl<T, $Res, _$LoadingImpl<T>>
+    extends _$NotficationStateCopyWithImpl<T, $Res, _$LoadingImpl<T>>
     implements _$$LoadingImplCopyWith<T, $Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl<T> _value, $Res Function(_$LoadingImpl<T>) _then)
@@ -224,7 +223,7 @@ class _$LoadingImpl<T> implements Loading<T> {
 
   @override
   String toString() {
-    return 'AddNotficationState<$T>.loading()';
+    return 'NotficationState<$T>.loading()';
   }
 
   @override
@@ -311,7 +310,7 @@ class _$LoadingImpl<T> implements Loading<T> {
   }
 }
 
-abstract class Loading<T> implements AddNotficationState<T> {
+abstract class Loading<T> implements NotficationState<T> {
   const factory Loading() = _$LoadingImpl<T>;
 }
 
@@ -326,7 +325,7 @@ abstract class _$$SuccessImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<T, $Res>
-    extends _$AddNotficationStateCopyWithImpl<T, $Res, _$SuccessImpl<T>>
+    extends _$NotficationStateCopyWithImpl<T, $Res, _$SuccessImpl<T>>
     implements _$$SuccessImplCopyWith<T, $Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl<T> _value, $Res Function(_$SuccessImpl<T>) _then)
@@ -356,7 +355,7 @@ class _$SuccessImpl<T> implements Success<T> {
 
   @override
   String toString() {
-    return 'AddNotficationState<$T>.sucess(data: $data)';
+    return 'NotficationState<$T>.sucess(data: $data)';
   }
 
   @override
@@ -452,7 +451,7 @@ class _$SuccessImpl<T> implements Success<T> {
   }
 }
 
-abstract class Success<T> implements AddNotficationState<T> {
+abstract class Success<T> implements NotficationState<T> {
   const factory Success(final T data) = _$SuccessImpl<T>;
 
   T get data;
@@ -472,7 +471,7 @@ abstract class _$$ErrorImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<T, $Res>
-    extends _$AddNotficationStateCopyWithImpl<T, $Res, _$ErrorImpl<T>>
+    extends _$NotficationStateCopyWithImpl<T, $Res, _$ErrorImpl<T>>
     implements _$$ErrorImplCopyWith<T, $Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl<T> _value, $Res Function(_$ErrorImpl<T>) _then)
@@ -502,7 +501,7 @@ class _$ErrorImpl<T> implements Error<T> {
 
   @override
   String toString() {
-    return 'AddNotficationState<$T>.error(error: $error)';
+    return 'NotficationState<$T>.error(error: $error)';
   }
 
   @override
@@ -597,7 +596,7 @@ class _$ErrorImpl<T> implements Error<T> {
   }
 }
 
-abstract class Error<T> implements AddNotficationState<T> {
+abstract class Error<T> implements NotficationState<T> {
   const factory Error({required final String error}) = _$ErrorImpl<T>;
 
   String get error;

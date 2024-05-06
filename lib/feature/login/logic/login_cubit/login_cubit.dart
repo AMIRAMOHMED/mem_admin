@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref_key.dart';
 import 'package:mem_admain/feature/login/data/models/login_request_body.dart';
+import 'package:mem_admain/feature/login/data/models/set_firebase_it_request_body.dart';
 import 'package:mem_admain/feature/login/data/repository/login_repo.dart';
 import 'package:mem_admain/feature/login/logic/login_cubit/login_state.dart';
 
@@ -28,6 +30,14 @@ class LoginCubit extends Cubit<LoginState> {
             .setString(PrefKeys.accessToken, loginResponseBody.token ?? '');
         await SharedPref().setBoolean(PrefKeys.isLogin, true);
       }
+      print("${loginResponseBody.token}");
+      FirebaseMessaging.instance.getToken().then((String? tokenId) async {
+          await _loginRepo.setFirebaseId(
+            'Bearer ${loginResponseBody.token}',
+            SetFireBaseIdBodyRequest(id: tokenId!)
+          );
+            debugPrint('Login Token ==> $tokenId');
+        });
 
       emit(LoginState.success(loginResponse));
     }, failure: (error) {

@@ -6,6 +6,10 @@ class ApiConstants {
   static const String creatMeeting = "meetings/new";
   static const String getAllMeetings = "meetings/all";
   static const String deleteMeeting = "meetings/";
+  static const String setFireBaseId = "user/firebase-id";
+  static const String creatNotifications = "notifications/new";
+  static const String getAllNotifications = "notifications/all";
+  static const String deleteNotifications = "notifications/";
 }
 
 class ApiErrors {

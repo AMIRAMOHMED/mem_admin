@@ -76,6 +76,37 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<dynamic> setFirebaseId(
+    String token,
+    SetFireBaseIdBodyRequest setFireBaseIdBodyRequest,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(setFireBaseIdBodyRequest.toJson());
+    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'user/firebase-id',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    final value = _result.data;
+    return value;
+  }
+
+  @override
   Future<MeetingResponseBody> creatMeeting(
     String token,
     MeetingRequestBody meetingRequestBody,
@@ -166,6 +197,38 @@ class _ApiService implements ApiService {
               baseUrl,
             ))));
     final value = DeletMeetingResponsBody.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<NotificationResponseBody> createNotification(
+    String token,
+    NotificationRequestModel notificationRequestModel,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(notificationRequestModel.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<NotificationResponseBody>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'notifications/new',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = NotificationResponseBody.fromJson(_result.data!);
     return value;
   }
 
