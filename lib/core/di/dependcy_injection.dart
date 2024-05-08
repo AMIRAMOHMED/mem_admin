@@ -9,8 +9,10 @@ import 'package:mem_admain/feature/login/data/repository/login_repo.dart';
 import 'package:mem_admain/feature/login/data/repository/vaildate_token_repo.dart';
 import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_cubit.dart';
 import 'package:mem_admain/feature/login/logic/login_cubit/login_cubit.dart';
+import 'package:mem_admain/feature/notification/data/repo/all_notification_repo.dart';
 import 'package:mem_admain/feature/notification/data/repo/create_notification_repo.dart';
-import 'package:mem_admain/feature/notification/logic/cubit/notfication_cubit.dart';
+import 'package:mem_admain/feature/notification/logic/all%20notification%20cubit/all_notification_cubit.dart';
+import 'package:mem_admain/feature/notification/logic/create%20notification%20cubit/notfication_cubit.dart';
 
 import '../networking/api_services.dart';
 
@@ -45,8 +47,14 @@ Future<void> setupGetIt() async {
 
   getIt.registerFactory<GetAllMeetingCubit>(() => GetAllMeetingCubit(getIt()));
 
-  
+  // Create Notification
   getIt.registerLazySingleton<NotificationRepo>(() => NotificationRepo(getIt()));
 
   getIt.registerFactory<NotficationCubit>(() => NotficationCubit(getIt()));
+
+  // Get All Notification
+    getIt.registerLazySingleton<AllNotificationRepo>(() => AllNotificationRepo(getIt()));
+
+
+  getIt.registerFactory<AllNotificationCubit>(() => AllNotificationCubit(getIt()));
 }

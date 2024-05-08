@@ -6,7 +6,7 @@ import 'package:mem_admain/core/sharedpre/shared_pref.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref_key.dart';
 import 'package:mem_admain/feature/notification/data/models/notification_request_body.dart';
 import 'package:mem_admain/feature/notification/data/repo/create_notification_repo.dart';
-import 'package:mem_admain/feature/notification/logic/cubit/notfication_state.dart';
+import 'package:mem_admain/feature/notification/logic/create%20notification%20cubit/notfication_state.dart';
 
 class NotficationCubit extends Cubit<NotficationState> {
   final NotificationRepo _notificationRepo;

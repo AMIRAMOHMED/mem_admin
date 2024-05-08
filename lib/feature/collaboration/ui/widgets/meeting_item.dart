@@ -88,6 +88,10 @@ class MeetingItem extends StatelessWidget {
                     .read<GetAllMeetingCubit>()
                     .deletMeeting('${allMeetings.id}');
                     context.pushReplacementNamed(allMeetingScreen);
+                      context
+                    .read<GetAllMeetingCubit>()
+                    .allMeetingsStream;
+
               },
             ),
           ),

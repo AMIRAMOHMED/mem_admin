@@ -11,7 +11,8 @@ import 'package:mem_admain/feature/group%20chat/ui/screens/chat_screen.dart';
 import 'package:mem_admain/feature/home/ui/screens/home_screen.dart';
 import 'package:mem_admain/feature/login/logic/login_cubit/login_cubit.dart';
 import 'package:mem_admain/feature/login/ui/screen/login_screen.dart';
-import 'package:mem_admain/feature/notification/logic/cubit/notfication_cubit.dart';
+import 'package:mem_admain/feature/notification/logic/all%20notification%20cubit/all_notification_cubit.dart';
+import 'package:mem_admain/feature/notification/logic/create%20notification%20cubit/notfication_cubit.dart';
 import 'package:mem_admain/feature/notification/ui/screens/all_notification_screen.dart';
 import 'package:mem_admain/feature/notification/ui/screens/notification_screen.dart';
 import 'package:mem_admain/feature/splah/splah_screen.dart';
@@ -71,9 +72,12 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const ChatScreen(),
         );
-        case allNotificationScreen:
+      case allNotificationScreen:
         return MaterialPageRoute(
-          builder: (_) => const AllNotificationScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<AllNotificationCubit>(),
+            child: const AllNotificationScreen(),
+          ),
         );
 
       default:

@@ -8,6 +8,8 @@ import 'package:mem_admain/feature/login/data/models/login_request_body.dart';
 import 'package:mem_admain/feature/login/data/models/login_response_body.dart';
 import 'package:mem_admain/feature/login/data/models/set_firebase_it_request_body.dart';
 import 'package:mem_admain/feature/login/data/models/token_request_body.dart';
+import 'package:mem_admain/feature/notification/data/models/delet_notification_respose_body.dart';
+import 'package:mem_admain/feature/notification/data/models/get_all_notification_response_body.dart';
 import 'package:mem_admain/feature/notification/data/models/notification_request_body.dart';
 import 'package:mem_admain/feature/notification/data/models/notification_response_body.dart';
 import 'package:retrofit/http.dart';
@@ -61,4 +63,16 @@ abstract class ApiService {
     @Header('Authorization') String token,
     @Body() NotificationRequestModel notificationRequestModel,
   );
+
+    @GET(ApiConstants.getAllNotifications)
+  Future<List<GetAllNotificationResponse>> getAllNotification(
+    @Header('Authorization') String token,
+  );
+
+ @DELETE("${ApiConstants.deleteNotifications}{id}")
+  Future<DeletNotificationResponsBody> deleteNotification(
+    @Header('Authorization') String token,
+    @Path("id") String id,
+  );
+
 }
