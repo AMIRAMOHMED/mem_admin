@@ -17,48 +17,22 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
 
-
-@override
-
-
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        context.pushName(homeScreen);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<VaildCubit>(), 
-      child: Scaffold(
-        body: BlocListener<VaildCubit, VaildState>(
-          listener: (context, state) {
-            state.whenOrNull(
-              loading: () {
-                // Show loading indicator
-              },
-              success: (loginResponse) async {
-                // Navigate to home screen on success
-                context.pushReplacementNamed(homeScreen);
-              },
-              error: (error) {
-                // Navigate to login screen on error
-                context.pushReplacementNamed(loginScreen);
-              },
-            );
-          },
-          child: const SplashScreenBody(),
-        ),
-      ),
+    return const Scaffold(
+      body: SplashScreenBody(),
     );
   }
-@override
-  void initState() {
-  super.initState();
-
-  final token = SharedPref().getString(PrefKeys.accessToken);
-  if (token != null && token.isNotEmpty) {
-    BlocProvider.of<VaildCubit>(context).checkValidationToken();
-  } else {
-    context.pushReplacementNamed(loginScreen);
-  }
-}
-
 }

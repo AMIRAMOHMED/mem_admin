@@ -26,9 +26,9 @@ Future<void> setupGetIt() async {
 
   //check token
 
-  getIt.registerLazySingleton<VaildateTokenRepo>(
-      () => VaildateTokenRepo(getIt()));
-  getIt.registerFactory<VaildCubit>(() => VaildCubit(getIt()));
+  // getIt.registerLazySingleton<VaildateTokenRepo>(
+  //     () => VaildateTokenRepo(getIt()));
+  // getIt.registerFactory<VaildCubit>(() => VaildCubit(getIt()));
 
   // getIt.registerFactory<RefreshTokenCubit>(() => RefreshTokenCubit(getIt()));
 
@@ -45,9 +45,8 @@ Future<void> setupGetIt() async {
 
   getIt.registerFactory<GetAllMeetingCubit>(() => GetAllMeetingCubit(getIt()));
 
-  //notification
-  getIt
-      .registerLazySingleton<NotificationRepo>(() => NotificationRepo(getIt()));
+  
+  getIt.registerLazySingleton<NotificationRepo>(() => NotificationRepo(getIt()));
 
   getIt.registerFactory<NotficationCubit>(() => NotficationCubit(getIt()));
 }

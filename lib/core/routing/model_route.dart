@@ -6,3 +6,8 @@ const String exerciseScreen ='/exerciseScreen';
 const String meetingScreen ='/meetingScreen';
 const String allMeetingScreen ='/allMeetingScreen';
 const String notificationScreen ='/notificationScreen';
+const String chatScreen ='/chatScreen';
+const String allNotificationScreen ='/allNotificationScreen';
+
+
+

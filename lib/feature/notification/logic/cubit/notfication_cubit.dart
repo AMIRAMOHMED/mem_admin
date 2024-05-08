@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/app/cubit/selection_user_cubit.dart';
@@ -16,10 +17,9 @@ class NotficationCubit extends Cubit<NotficationState> {
 
   void emitCreatNotificationState(BuildContext context) async {
     emit(const NotficationState.loading());
-  final token = SharedPref().getString(PrefKeys.accessToken);
+    final token = SharedPref().getString(PrefKeys.accessToken);
 
     final forWho = context.read<SelectionUserCubit>().pickedChooseValue;
-
     final respons = await _notificationRepo.createNotificationrepo(
       "Bearer $token",
       NotificationRequestModel(

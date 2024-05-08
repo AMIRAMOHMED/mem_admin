@@ -7,7 +7,7 @@ import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
-import 'package:mem_admain/core/widgets/choose_widget.dart';
+import 'package:mem_admain/core/widgets/user_selection_box.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
 import 'package:mem_admain/feature/collaboration/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
 import 'package:mem_admain/feature/collaboration/ui/widgets/hour_pick.dart';
@@ -129,7 +129,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                       context.read<CreatMeetingCubit>().emitCreatMeetingState(
                           context, pickedData, selectedTime);
 
-                          context.pushReplacementNamed(allMeetingScreen);
+                          context.pushReplacementNamed(meetingScreen);
                     },
                   ),
                   SizedBox(

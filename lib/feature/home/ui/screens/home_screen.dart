@@ -44,7 +44,9 @@ class HomeScreen extends StatelessWidget {
                 color: AppPallete.darkPink,
                 color2: AppPallete.lightPink,
                 text: "المجموعات",
-                onTap: () {},
+                onTap: () {
+                  context.pushName(chatScreen);
+                },
               ),
               SizedBox(
                 height: 20.h,

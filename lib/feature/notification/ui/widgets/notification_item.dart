@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mem_admain/core/extension/context_extension.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
+import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/feature/notification/ui/widgets/details_of_notification_item.dart';
 
@@ -20,10 +22,6 @@ class NotificationItem extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const DetailsOfNotificationItem(
-              text1: '  :اسم الاشعار',
-              text2: 'hjgjgjh ',
-            ),
             SizedBox(
               height: 10.h,
             ),
@@ -36,13 +34,21 @@ class NotificationItem extends StatelessWidget {
               text1: '  :استهداف الاشعار',
               text2: "  hbnbمحتوي الاشعار",
             ),
-            const Row(
+             Row(
               children: [
-                 Icon(
-                  Icons.assignment_turned_in_outlined ,
-                  color: AppPallete.green,
-                  size: 40,
-                ),
+                 IconButton(
+              icon: Icon(
+                Icons.delete,
+                size: 30.h,
+              ),
+              color: Colors.red,
+              onPressed: () {
+                
+                    // .read<GetAllMeetingCubit>()
+                    // .deletMeeting('${allMeetings.id}');
+                    context.pushReplacementNamed(allNotificationScreen);
+              },
+            ),
               ],
             )
           ],

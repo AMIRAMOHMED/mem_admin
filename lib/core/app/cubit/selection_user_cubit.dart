@@ -14,3 +14,4 @@ class SelectionUserCubit extends Cubit<SelectionUserState> {
 
   String get pickedChooseValue => pickedChoose;
 }
+  

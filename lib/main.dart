@@ -34,7 +34,6 @@ class MemAdmain extends StatelessWidget {
       theme: AppTheme.darkTthemeMode,
       navigatorKey: navigator,
       onGenerateRoute: AppRoutes().onGenerateRoute,
-      initialRoute: homeScreen,
     );
   }
 }

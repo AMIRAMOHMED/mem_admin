@@ -7,11 +7,12 @@ import 'package:mem_admain/feature/collaboration/logic/creat%20meeting%20cubit/c
 import 'package:mem_admain/feature/collaboration/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/collaboration/ui/screens/all_meeting_screen.dart';
 import 'package:mem_admain/feature/collaboration/ui/screens/meeting_screen.dart';
+import 'package:mem_admain/feature/group%20chat/ui/screens/chat_screen.dart';
 import 'package:mem_admain/feature/home/ui/screens/home_screen.dart';
 import 'package:mem_admain/feature/login/logic/login_cubit/login_cubit.dart';
-import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_cubit.dart';
 import 'package:mem_admain/feature/login/ui/screen/login_screen.dart';
 import 'package:mem_admain/feature/notification/logic/cubit/notfication_cubit.dart';
+import 'package:mem_admain/feature/notification/ui/screens/all_notification_screen.dart';
 import 'package:mem_admain/feature/notification/ui/screens/notification_screen.dart';
 import 'package:mem_admain/feature/splah/splah_screen.dart';
 
@@ -32,13 +33,12 @@ class AppRoutes {
         );
       case notificationScreen:
         return MaterialPageRoute(
-          builder: (_) => MultiBlocProvider(
-            providers: [
-            BlocProvider(
-              create: (context) => SelectionUserCubit(),
-            ),
+          builder: (_) => MultiBlocProvider(providers: [
             BlocProvider(
               create: (context) => getIt<NotficationCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => SelectionUserCubit(),
             ),
           ], child: const NotificationScreen()),
         );
@@ -48,6 +48,9 @@ class AppRoutes {
             providers: [
               BlocProvider(
                 create: (context) => getIt<CreatMeetingCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => SelectionUserCubit(),
               ),
             ],
             child: const MeetingScreen(),
@@ -62,16 +65,16 @@ class AppRoutes {
         );
       case splashScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<VaildCubit>(),
-            child: const SplashScreen(),
-          ),
+          builder: (_) => const SplashScreen(),
         );
-      // case informationGroupScreen:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const InformationGroupScreen(),
-
-      //   );
+      case chatScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ChatScreen(),
+        );
+        case allNotificationScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AllNotificationScreen(),
+        );
 
       default:
         return MaterialPageRoute(
