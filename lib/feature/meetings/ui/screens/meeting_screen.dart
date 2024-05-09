@@ -9,8 +9,8 @@ import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/user_selection_box.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
-import 'package:mem_admain/feature/collaboration/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
-import 'package:mem_admain/feature/collaboration/ui/widgets/hour_pick.dart';
+import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
+import 'package:mem_admain/feature/meetings/ui/widgets/hour_pick.dart';
 
 import '../widgets/data_pick.dart';
 

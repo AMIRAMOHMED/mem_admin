@@ -6,8 +6,8 @@ import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
 
-import 'package:mem_admain/feature/collaboration/data/models/get_all_meeting_respons_body.dart';
-import 'package:mem_admain/feature/collaboration/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
+import 'package:mem_admain/feature/meetings/data/models/get_all_meeting_respons_body.dart';
+import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 
 class MeetingItem extends StatelessWidget {
   const MeetingItem({

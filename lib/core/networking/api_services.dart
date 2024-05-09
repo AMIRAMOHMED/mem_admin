@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:mem_admain/core/networking/api_constant.dart';
-import 'package:mem_admain/feature/collaboration/data/models/delet_meeting_respons.dart';
-import 'package:mem_admain/feature/collaboration/data/models/get_all_meeting_respons_body.dart';
-import 'package:mem_admain/feature/collaboration/data/models/meeting_request_body.dart';
-import 'package:mem_admain/feature/collaboration/data/models/meeting_response_body.dart';
+import 'package:mem_admain/feature/meetings/data/models/delet_meeting_respons.dart';
+import 'package:mem_admain/feature/meetings/data/models/get_all_meeting_respons_body.dart';
+import 'package:mem_admain/feature/meetings/data/models/meeting_request_body.dart';
+import 'package:mem_admain/feature/meetings/data/models/meeting_response_body.dart';
 import 'package:mem_admain/feature/login/data/models/login_request_body.dart';
 import 'package:mem_admain/feature/login/data/models/login_response_body.dart';
 import 'package:mem_admain/feature/login/data/models/set_firebase_it_request_body.dart';

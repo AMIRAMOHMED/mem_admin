@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mem_admain/core/networking/dio_factroy.dart';
-import 'package:mem_admain/feature/collaboration/data/repo/creat_meeting_repo.dart';
-import 'package:mem_admain/feature/collaboration/data/repo/get_all_meetings_repo.dart';
-import 'package:mem_admain/feature/collaboration/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
-import 'package:mem_admain/feature/collaboration/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
+import 'package:mem_admain/feature/meetings/data/repo/creat_meeting_repo.dart';
+import 'package:mem_admain/feature/meetings/data/repo/get_all_meetings_repo.dart';
+import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
+import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/login/data/repository/login_repo.dart';
 import 'package:mem_admain/feature/login/data/repository/vaildate_token_repo.dart';
 import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_cubit.dart';

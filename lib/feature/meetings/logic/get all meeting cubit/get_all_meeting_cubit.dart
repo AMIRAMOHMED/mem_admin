@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref_key.dart';
-import 'package:mem_admain/feature/collaboration/data/models/get_all_meeting_respons_body.dart';
-import 'package:mem_admain/feature/collaboration/data/repo/get_all_meetings_repo.dart';
-import 'package:mem_admain/feature/collaboration/logic/get%20all%20meeting%20cubit/get_all_meeting_state.dart';
+import 'package:mem_admain/feature/meetings/data/models/get_all_meeting_respons_body.dart';
+import 'package:mem_admain/feature/meetings/data/repo/get_all_meetings_repo.dart';
+import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/get_all_meeting_state.dart';
 
 class GetAllMeetingCubit extends Cubit<GetAllMeetingState> {
   final GetAllMeetingsRepo _getAllMeetingsRepo;

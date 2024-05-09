@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref_key.dart';
-import 'package:mem_admain/feature/collaboration/data/models/meeting_request_body.dart';
-import 'package:mem_admain/feature/collaboration/data/repo/creat_meeting_repo.dart';
-import 'package:mem_admain/feature/collaboration/logic/creat%20meeting%20cubit/creat_meeting_state.dart';
+import 'package:mem_admain/feature/meetings/data/models/meeting_request_body.dart';
+import 'package:mem_admain/feature/meetings/data/repo/creat_meeting_repo.dart';
+import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_state.dart';
 
 import '../../../../core/app/cubit/selection_user_cubit.dart';
 

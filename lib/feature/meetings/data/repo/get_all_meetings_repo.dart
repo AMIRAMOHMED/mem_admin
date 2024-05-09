@@ -1,8 +1,8 @@
 
 import 'package:mem_admain/core/networking/api_error_handler.dart';
 import 'package:mem_admain/core/networking/api_result.dart';
-import 'package:mem_admain/feature/collaboration/data/models/delet_meeting_respons.dart';
-import 'package:mem_admain/feature/collaboration/data/models/get_all_meeting_respons_body.dart';
+import 'package:mem_admain/feature/meetings/data/models/delet_meeting_respons.dart';
+import 'package:mem_admain/feature/meetings/data/models/get_all_meeting_respons_body.dart';
 
 import '../../../../core/networking/api_services.dart';
 
