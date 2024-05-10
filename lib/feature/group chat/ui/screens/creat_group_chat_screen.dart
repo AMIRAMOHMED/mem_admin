@@ -11,17 +11,17 @@ import 'package:mem_admain/core/widgets/sub_title_widget.dart';
 import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/ui/widgets/chosse_users_widget.dart';
 
-class GroupChatScreen extends StatefulWidget {
-  const GroupChatScreen({super.key});
+class CreateGroupChatScreen extends StatefulWidget {
+  const CreateGroupChatScreen({super.key});
 
   @override
-  State<GroupChatScreen> createState() => _GroupChatScreenState();
+  State<CreateGroupChatScreen> createState() => _CreateGroupChatScreenState();
 }
 
 late TextEditingController groupName;
 List<String> selecteddUserIdd = [];
 
-class _GroupChatScreenState extends State<GroupChatScreen> {
+class _CreateGroupChatScreenState extends State<CreateGroupChatScreen> {
   @override
   void initState() {
     super.initState();
@@ -44,7 +44,6 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                 buttonText: " عرض جميع المجموعات ",
                 textStyle: AppStyles.font20Black(context),
                 onPressed: () {
-
                   context.pushReplacementNamed(allGroupScreen);
                 },
               ),

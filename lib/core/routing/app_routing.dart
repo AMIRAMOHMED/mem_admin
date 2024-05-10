@@ -7,11 +7,12 @@ import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_us
 import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/logic/group%20chat%20cubit/group_chat_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/ui/screens/all_group_screen.dart';
+import 'package:mem_admain/feature/group%20chat/ui/screens/chat_screen.dart';
 import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/ui/screens/all_meeting_screen.dart';
 import 'package:mem_admain/feature/meetings/ui/screens/meeting_screen.dart';
-import 'package:mem_admain/feature/group%20chat/ui/screens/group_chat_screen.dart';
+import 'package:mem_admain/feature/group%20chat/ui/screens/creat_group_chat_screen.dart';
 import 'package:mem_admain/feature/home/ui/screens/home_screen.dart';
 import 'package:mem_admain/feature/login/logic/login_cubit/login_cubit.dart';
 import 'package:mem_admain/feature/login/ui/screen/login_screen.dart';
@@ -72,7 +73,7 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const SplashScreen(),
         );
-      case chatScreen:
+      case createGroupScreen:
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
@@ -83,7 +84,7 @@ class AppRoutes {
                 create: (context) => getIt<CreatGroupCubit>(),
               ),
             ],
-            child: const GroupChatScreen(),
+            child: const CreateGroupChatScreen(),
           ),
         );
       case allNotificationScreen:
@@ -97,11 +98,15 @@ class AppRoutes {
       case allGroupScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) =>  getIt<GroupChatCubit>(),
+            create: (context) => getIt<GroupChatCubit>(),
             child: const AllGroupScreen(),
           ),
         );
-
+ 
+      case chatScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ChatScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
