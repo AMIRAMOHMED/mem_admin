@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/app/cubit/selection_user_cubit.dart';
 import 'package:mem_admain/core/di/dependcy_injection.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
+import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_user_cubit.dart';
 import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/ui/screens/all_meeting_screen.dart';
@@ -70,7 +71,14 @@ class AppRoutes {
         );
       case chatScreen:
         return MaterialPageRoute(
-          builder: (_) => const ChatScreen(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<AllUserCubit>(),
+              ),
+            ],
+            child: const ChatScreen(),
+          ),
         );
       case allNotificationScreen:
         return MaterialPageRoute(

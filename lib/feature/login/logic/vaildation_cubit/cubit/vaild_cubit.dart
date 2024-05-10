@@ -20,16 +20,6 @@ class VaildCubit extends Cubit<VaildState> {
     final response =
         await _validateTokenRepo.vaildateToken(TokenRequestBody(token: token!));
 
-    response.when(
-      success: (response) {
-  log(response.toString());
-        emit(const VaildState.success(homeScreen));
-      },
-      failure: (error) {
-        emit(
-          VaildState.error(error: error.apiErrorModel.message ?? ''),
-        );
-      },
-    );
+
   }
 }

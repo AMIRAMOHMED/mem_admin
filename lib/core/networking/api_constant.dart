@@ -10,6 +10,10 @@ class ApiConstants {
   static const String creatNotifications = "notifications/new";
   static const String getAllNotifications = "notifications/all";
   static const String deleteNotifications = "notifications/";
+  static const String getAllUser = "user/all";
+  static const String creatGroup = "groups/new";
+  static const String getAllGroup = "groups/all";
+  static const String deleteGroup = "groups/";
 }
 
 class ApiErrors {

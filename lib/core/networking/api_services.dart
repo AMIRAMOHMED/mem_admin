@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:mem_admain/core/networking/api_constant.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/get_all_User.dart';
+import 'package:mem_admain/feature/group%20chat/data/repo/get_all_user_repo.dart';
 import 'package:mem_admain/feature/meetings/data/models/delet_meeting_respons.dart';
 import 'package:mem_admain/feature/meetings/data/models/get_all_meeting_respons_body.dart';
 import 'package:mem_admain/feature/meetings/data/models/meeting_request_body.dart';
@@ -74,5 +76,11 @@ abstract class ApiService {
     @Header('Authorization') String token,
     @Path("id") String id,
   );
+
+    @GET(ApiConstants.getAllUser)
+  Future<List<GetAllUserResponse>> getAllUrser(
+    @Header('Authorization') String token,
+  );
+
 
 }

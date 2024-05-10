@@ -36,7 +36,7 @@ class LoginCubit extends Cubit<LoginState> {
             'Bearer ${loginResponseBody.token}',
             SetFireBaseIdBodyRequest(id: tokenId!)
           );
-            debugPrint('Login Token ==> $tokenId');
+            debugPrint('Login Token ==> $loginResponseBody.token');
         });
 
       emit(LoginState.success(loginResponse));
