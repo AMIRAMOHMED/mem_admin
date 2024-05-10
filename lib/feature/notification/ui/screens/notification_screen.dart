@@ -9,7 +9,6 @@ import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
 import 'package:mem_admain/core/widgets/user_selection_box.dart';
-import 'package:mem_admain/feature/notification/logic/all%20notification%20cubit/all_notification_cubit.dart';
 import 'package:mem_admain/feature/notification/logic/create%20notification%20cubit/notfication_cubit.dart';
 
 class NotificationScreen extends StatefulWidget {

@@ -8,30 +8,20 @@ import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_us
 import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_user_state.dart';
 
 class ChooseUsers extends StatefulWidget {
-  const ChooseUsers({super.key});
+  const ChooseUsers({super.key, required this.adminSelected});
+    final Function(List<String>) adminSelected;
 
   @override
   State<ChooseUsers> createState() => _ChooseUsersState();
 }
 
 class _ChooseUsersState extends State<ChooseUsers> {
-  final List<GetAllUserResponse> _selectedUser = [];
+  final List<String> _selectedUserId = [];
 
   @override
   void initState() {
     super.initState();
     context.read<AllUserCubit>().getAllUser();
-  }
-
-  String getUserTypeLabel(String userType) {
-    switch (userType) {
-      case 'RELATED':
-        return 'ذو صله';
-      case 'STUTTERER':
-        return 'متعلثم';
-      default:
-        return userType; 
-    }
   }
 
   @override
@@ -65,13 +55,14 @@ class _ChooseUsersState extends State<ChooseUsers> {
                       ],
                     ),
                   ),
-                  value: _selectedUser.contains(user),
+                  value: _selectedUserId.contains(user.id),
                   onChanged: (value) {
                     setState(() {
                       if (value!) {
-                        _selectedUser.add(user);
+                        _selectedUserId.add(user.id);
+                        widget.adminSelected(_selectedUserId);
                       } else {
-                        _selectedUser.remove(user);
+                        _selectedUserId.remove(user.id);
                       }
                     });
                   },
@@ -82,5 +73,16 @@ class _ChooseUsersState extends State<ChooseUsers> {
         );
       },
     );
+  }
+
+  String getUserTypeLabel(String userType) {
+    switch (userType) {
+      case 'RELATED':
+        return 'ذو صله';
+      case 'STUTTERER':
+        return 'متعلثم';
+      default:
+        return userType;
+    }
   }
 }

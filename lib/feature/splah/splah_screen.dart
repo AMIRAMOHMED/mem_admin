@@ -6,7 +6,6 @@ import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref_key.dart';
 import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_cubit.dart';
-import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_state.dart';
 import 'package:mem_admain/feature/splah/splash_screen_body.dart';
 
 class SplashScreen extends StatefulWidget {

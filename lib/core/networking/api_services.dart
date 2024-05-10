@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:mem_admain/core/networking/api_constant.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/creat_group_request_body.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/creat_group_response_body.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/delet_group_response_body.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/get_all_User.dart';
-import 'package:mem_admain/feature/group%20chat/data/repo/get_all_user_repo.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/get_all_groups_response.dart';
 import 'package:mem_admain/feature/meetings/data/models/delet_meeting_respons.dart';
 import 'package:mem_admain/feature/meetings/data/models/get_all_meeting_respons_body.dart';
 import 'package:mem_admain/feature/meetings/data/models/meeting_request_body.dart';
@@ -66,21 +69,35 @@ abstract class ApiService {
     @Body() NotificationRequestModel notificationRequestModel,
   );
 
-    @GET(ApiConstants.getAllNotifications)
+  @GET(ApiConstants.getAllNotifications)
   Future<List<GetAllNotificationResponse>> getAllNotification(
     @Header('Authorization') String token,
   );
 
- @DELETE("${ApiConstants.deleteNotifications}{id}")
+  @DELETE("${ApiConstants.deleteNotifications}{id}")
   Future<DeletNotificationResponsBody> deleteNotification(
     @Header('Authorization') String token,
     @Path("id") String id,
   );
 
-    @GET(ApiConstants.getAllUser)
+  @GET(ApiConstants.getAllUser)
   Future<List<GetAllUserResponse>> getAllUrser(
     @Header('Authorization') String token,
   );
+  @POST(ApiConstants.creatGroup)
+  Future<CreatGroupResponseBody> createGroup(
+    @Header('Authorization') String token,
+    @Body() CreatGroupRequestBody creatGroupRequestBody,
+  );
 
+  @GET(ApiConstants.getAllGroup)
+  Future<List<GetAllGroupResponseBody>> getAllGroups(
+    @Header('Authorization') String token,
+  );
 
+  @DELETE("${ApiConstants.deleteGroup}{id}")
+  Future<DeletGroupResponse> deletGroup(
+    @Header('Authorization') String token,
+    @Path("id") String id,
+  );
 }
