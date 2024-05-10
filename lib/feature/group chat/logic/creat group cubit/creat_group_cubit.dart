@@ -9,15 +9,17 @@ import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/crea
 class CreatGroupCubit extends Cubit<CreatGroupState> {
   final GroupRepo _groupRepo;
   CreatGroupCubit(this._groupRepo) : super(const CreatGroupState.initial());
+
   final token = SharedPref().getString(PrefKeys.accessToken);
   final TextEditingController groupName = TextEditingController();
 
   void emitCreatGroupState(List<String> selectedUserIds) async {
+
     emit(const CreatGroupState.loading());
     final respons = await _groupRepo.creatGroup(
       "Bearer $token",
       CreatGroupRequestBody(
-          name: groupName.text, selectedUserIds: selectedUserIds),
+          name: groupName.text, selectedUsersIds: selectedUserIds),
     );
 
     respons.when(success: (meetingResponseBody) {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mem_admain/core/extension/context_extension.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
+import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:mem_admain/core/widgets/app_bar.dart';
@@ -9,17 +11,17 @@ import 'package:mem_admain/core/widgets/sub_title_widget.dart';
 import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/ui/widgets/chosse_users_widget.dart';
 
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+class GroupChatScreen extends StatefulWidget {
+  const GroupChatScreen({super.key});
 
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  State<GroupChatScreen> createState() => _GroupChatScreenState();
 }
 
 late TextEditingController groupName;
 List<String> selecteddUserIdd = [];
 
-class _ChatScreenState extends State<ChatScreen> {
+class _GroupChatScreenState extends State<GroupChatScreen> {
   @override
   void initState() {
     super.initState();
@@ -41,7 +43,10 @@ class _ChatScreenState extends State<ChatScreen> {
                 backgroundColor: AppPallete.lightPink,
                 buttonText: " عرض جميع المجموعات ",
                 textStyle: AppStyles.font20Black(context),
-                onPressed: () {},
+                onPressed: () {
+
+                  context.pushReplacementNamed(allGroupScreen);
+                },
               ),
               SizedBox(
                 height: 15.h,

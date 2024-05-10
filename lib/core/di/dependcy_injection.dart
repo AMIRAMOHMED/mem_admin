@@ -5,6 +5,7 @@ import 'package:mem_admain/feature/group%20chat/data/repo/get_all_user_repo.dart
 import 'package:mem_admain/feature/group%20chat/data/repo/group_repo.dart';
 import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_user_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_cubit.dart';
+import 'package:mem_admain/feature/group%20chat/logic/group%20chat%20cubit/group_chat_cubit.dart';
 import 'package:mem_admain/feature/meetings/data/repo/creat_meeting_repo.dart';
 import 'package:mem_admain/feature/meetings/data/repo/get_all_meetings_repo.dart';
 import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
@@ -67,8 +68,9 @@ Future<void> setupGetIt() async {
 
   getIt.registerFactory<AllUserCubit>(() => AllUserCubit(getIt()));
 
-  // 
-    getIt.registerLazySingleton<GroupRepo>(() => GroupRepo(getIt()));
+  // group chat
+  getIt.registerLazySingleton<GroupRepo>(() => GroupRepo(getIt()));
 
   getIt.registerFactory<CreatGroupCubit>(() => CreatGroupCubit(getIt()));
+  getIt.registerFactory<GroupChatCubit>(() => GroupChatCubit(getIt()));
 }

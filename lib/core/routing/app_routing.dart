@@ -5,11 +5,13 @@ import 'package:mem_admain/core/di/dependcy_injection.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_user_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_cubit.dart';
+import 'package:mem_admain/feature/group%20chat/logic/group%20chat%20cubit/group_chat_cubit.dart';
+import 'package:mem_admain/feature/group%20chat/ui/screens/all_group_screen.dart';
 import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/ui/screens/all_meeting_screen.dart';
 import 'package:mem_admain/feature/meetings/ui/screens/meeting_screen.dart';
-import 'package:mem_admain/feature/group%20chat/ui/screens/chat_screen.dart';
+import 'package:mem_admain/feature/group%20chat/ui/screens/group_chat_screen.dart';
 import 'package:mem_admain/feature/home/ui/screens/home_screen.dart';
 import 'package:mem_admain/feature/login/logic/login_cubit/login_cubit.dart';
 import 'package:mem_admain/feature/login/ui/screen/login_screen.dart';
@@ -81,7 +83,7 @@ class AppRoutes {
                 create: (context) => getIt<CreatGroupCubit>(),
               ),
             ],
-            child: const ChatScreen(),
+            child: const GroupChatScreen(),
           ),
         );
       case allNotificationScreen:
@@ -89,6 +91,14 @@ class AppRoutes {
           builder: (_) => BlocProvider(
             create: (context) => getIt<AllNotificationCubit>(),
             child: const AllNotificationScreen(),
+          ),
+        );
+
+      case allGroupScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>  getIt<GroupChatCubit>(),
+            child: const AllGroupScreen(),
           ),
         );
 

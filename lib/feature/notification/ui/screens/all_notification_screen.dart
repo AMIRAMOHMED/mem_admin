@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/widgets/app_bar.dart';
+import 'package:mem_admain/core/widgets/loading_widget.dart';
 import 'package:mem_admain/feature/notification/data/models/get_all_notification_response_body.dart';
 import 'package:mem_admain/feature/notification/logic/all%20notification%20cubit/all_notification_cubit.dart';
 import 'package:mem_admain/feature/notification/ui/widgets/notification_item.dart';
@@ -22,7 +23,7 @@ class AllNotificationScreen extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: CustomLoadingWidget(),
               );
             } else if (snapshot.hasError) {
               return Center(
@@ -35,7 +36,7 @@ class AllNotificationScreen extends StatelessWidget {
               final allNotificationsList = snapshot.data;
               if (allNotificationsList == null || allNotificationsList.isEmpty) {
                 return const Center(
-                  child: Text('No notifications available.'),
+                  child: Text('لا يوجد اشعارات'),
                 );
               } else {
                 return CustomScrollView(

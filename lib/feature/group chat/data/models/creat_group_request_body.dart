@@ -6,11 +6,11 @@ part 'creat_group_request_body.g.dart';
 class CreatGroupRequestBody {
   String name;
 
-  List<String> selectedUserIds;
+  List<String> selectedUsersIds;
 
   CreatGroupRequestBody({
     required this.name,
-     required this.selectedUserIds ,
+     required this.selectedUsersIds ,
   });
 
   factory CreatGroupRequestBody.fromJson(Map<String, dynamic> json) =>
