@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mem_admain/core/extension/context_extension.dart';
+import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:mem_admain/core/widgets/loading_widget.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/get_all_groups_response.dart';
@@ -44,8 +46,11 @@ class AllGroupScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: GroupChatItem(
-                            allGroups: allGroupsList[index],
+                          child: GestureDetector(onTap: (){ context.pushName(chatScreen, arguments: allGroupsList[index]);                       
+},
+                            child: GroupChatItem(
+                              allGroups: allGroupsList[index],
+                            ),
                           ),
                         );
                       },

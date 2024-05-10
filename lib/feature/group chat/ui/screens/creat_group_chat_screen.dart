@@ -44,7 +44,7 @@ class _CreateGroupChatScreenState extends State<CreateGroupChatScreen> {
                 buttonText: " عرض جميع المجموعات ",
                 textStyle: AppStyles.font20Black(context),
                 onPressed: () {
-                  context.pushReplacementNamed(allGroupScreen);
+                  context.pushName(allGroupScreen);
                 },
               ),
               SizedBox(

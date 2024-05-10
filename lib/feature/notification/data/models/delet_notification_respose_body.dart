@@ -7,8 +7,9 @@ class DeletNotificationResponsBody{
 
   final String ?errorCode;
   final String ?error;
+  final String message;
 
-  DeletNotificationResponsBody({required this.errorCode, required this.error});
+  DeletNotificationResponsBody(this.message, {required this.errorCode, required this.error});
 
     factory DeletNotificationResponsBody.fromJson(Map<String, dynamic> json) =>
       _$DeletNotificationResponsBodyFromJson(json);

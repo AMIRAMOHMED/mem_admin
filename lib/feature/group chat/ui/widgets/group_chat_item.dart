@@ -11,11 +11,10 @@ import 'package:mem_admain/feature/group%20chat/logic/group%20chat%20cubit/group
 
 class GroupChatItem extends StatelessWidget {
   const GroupChatItem({
-    super.key, required this.allGroups,
+    super.key, required this.allGroups, 
   });
 
   final GetAllGroupResponseBody allGroups;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,7 +44,7 @@ class GroupChatItem extends StatelessWidget {
                 context
                 .read<GroupChatCubit>()
                 .deletMeeting('${allGroups.id}');
-                context.pushReplacementNamed(allGroupScreen);
+                context.pushName(allGroupScreen);
                   context
                 .read<GroupChatCubit>()
                 .allGroupsStream;

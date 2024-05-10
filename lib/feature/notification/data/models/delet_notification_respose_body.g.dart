@@ -9,6 +9,7 @@ part of 'delet_notification_respose_body.dart';
 DeletNotificationResponsBody _$DeletNotificationResponsBodyFromJson(
         Map<String, dynamic> json) =>
     DeletNotificationResponsBody(
+      json['message'] as String,
       errorCode: json['errorCode'] as String?,
       error: json['error'] as String?,
     );
@@ -18,4 +19,5 @@ Map<String, dynamic> _$DeletNotificationResponsBodyToJson(
     <String, dynamic>{
       'errorCode': instance.errorCode,
       'error': instance.error,
+      'message': instance.message,
     };

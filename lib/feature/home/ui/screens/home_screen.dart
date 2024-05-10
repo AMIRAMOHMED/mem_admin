@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                 color2: AppPallete.lightPink,
                 text: "المجموعات",
                 onTap: () {
-                  context.pushName(chatScreen);
+                  context.pushName(createGroupScreen);
                 },
               ),
               SizedBox(

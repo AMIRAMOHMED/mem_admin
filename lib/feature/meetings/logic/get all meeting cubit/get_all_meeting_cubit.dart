@@ -16,12 +16,12 @@ class GetAllMeetingCubit extends Cubit<GetAllMeetingState> {
 
   GetAllMeetingCubit(this._getAllMeetingsRepo, )
       : super(const GetAllMeetingState.initial()) {
-    _fetchMeetings();
+    fetchMeetings();
   }
 
   final token = SharedPref().getString(PrefKeys.accessToken);
 
-  void _fetchMeetings() async {
+  void fetchMeetings() async {
     emit(const GetAllMeetingState.loading());
 
     final response =
@@ -45,7 +45,7 @@ class GetAllMeetingCubit extends Cubit<GetAllMeetingState> {
     final response = await _getAllMeetingsRepo.deletMeeting("Bearer $token", id);
 
     response.when(success: (deletmeetingresponsBody) {
-      _fetchMeetings();
+      fetchMeetings();
 
       emit(GetAllMeetingState.success(deletmeetingresponsBody));
     }, failure: (error) {

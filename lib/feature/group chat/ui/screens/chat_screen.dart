@@ -7,8 +7,11 @@ import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/feature/group%20chat/ui/widgets/chat_buble.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
+import '../../data/models/get_all_groups_response.dart';
+
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  const ChatScreen({super.key, required this.meeting});
+  final GetAllGroupResponseBody meeting;
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -39,11 +42,15 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
+  void sendMessage(String messag, String groupID) {
+    socket!.emit('message', {'message': messag, 'groupID': groupID});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(
-        text: 'اسم المجموعة',
+        text:" ${widget.meeting.name}",
       ),
       body: Column(
         children: [

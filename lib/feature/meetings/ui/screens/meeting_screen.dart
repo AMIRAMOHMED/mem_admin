@@ -10,6 +10,7 @@ import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/user_selection_box.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
 import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
+import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/ui/widgets/hour_pick.dart';
 
 import '../widgets/data_pick.dart';
@@ -55,8 +56,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                     buttonText: " عرض جميع الاجتماعات ",
                     textStyle: AppStyles.font20Black(context),
                     onPressed: () {
-
-                      context.pushReplacementNamed(allMeetingScreen);
+                      context.pushName(allMeetingScreen);
                     },
                   ),
                   PickTime(
@@ -129,7 +129,10 @@ class _MeetingScreenState extends State<MeetingScreen> {
                       context.read<CreatMeetingCubit>().emitCreatMeetingState(
                           context, pickedData, selectedTime);
 
-                          context.pushReplacementNamed(meetingScreen);
+                       context.read<GetAllMeetingCubit>().fetchMeetings;
+                       context.pushName(allMeetingScreen);
+
+
                     },
                   ),
                   SizedBox(
@@ -142,13 +145,12 @@ class _MeetingScreenState extends State<MeetingScreen> {
         ),
       ),
     );
-
   }
-   @override
-void dispose() {
-  super.dispose();
-  meetingName.dispose();
-  urlOfMeeting.dispose();
 
-}
+  @override
+  void dispose() {
+    super.dispose();
+    meetingName.dispose();
+    urlOfMeeting.dispose();
+  }
 }

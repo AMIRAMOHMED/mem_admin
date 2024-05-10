@@ -8,7 +8,6 @@ import 'package:mem_admain/core/sharedpre/shared_pref.dart';
 import 'package:mem_admain/core/theme/app_theme.dart';
 import 'package:mem_admain/firebase_options.dart';
 
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +21,8 @@ void main() async {
 
   runApp(const MemAdmain());
 }
+
+
 
 final GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();
 

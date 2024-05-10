@@ -80,7 +80,7 @@ class _ChooseUsersState extends State<ChooseUsers> {
       case 'RELATED':
         return 'ذو صله';
       case 'STUTTERER':
-        return 'متعلثم';
+        return 'متلعثم';
       default:
         return userType;
     }
