@@ -14,6 +14,12 @@ class ApiConstants {
   static const String creatGroup = "groups/new";
   static const String getAllGroup = "groups/all";
   static const String deleteGroup = "groups/";
+
+  //exercises
+  static const String getAllExercises = "exercises/all";
+  static const String createExercise = "exercises/new";
+  static const String deleteExercise = "exercises/";
+  static const String updateExercise = "exercises/";
 }
 
 class ApiErrors {
