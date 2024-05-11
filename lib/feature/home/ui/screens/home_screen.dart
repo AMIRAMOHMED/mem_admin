@@ -35,7 +35,8 @@ class HomeScreen extends StatelessWidget {
                 text: "التمارين",
                 color: AppPallete.lightBlueColor,
                 color2: AppPallete.blue,
-                onTap: () {},
+                onTap: () {context.pushName(creatExceriseScreen);
+                },
               ),
               SizedBox(
                 height: 20.h,

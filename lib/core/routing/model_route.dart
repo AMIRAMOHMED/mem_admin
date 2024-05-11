@@ -10,6 +10,8 @@ const String createGroupScreen ='/createGroupScreen';
 const String allNotificationScreen ='/allNotificationScreen';
 const String allGroupScreen="/allGroupScreen";
 const String chatScreen="/chatScreen";
+const String creatExceriseScreen="/creatExceriseScreen";
+const String allExerciseScreen="/allExerciseScreen";
 
 
 

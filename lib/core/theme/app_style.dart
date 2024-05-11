@@ -61,6 +61,15 @@ class AppStyles {
     );
   }
 
+ static TextStyle font16Black(BuildContext context) {
+    return TextStyle(
+      color: AppPallete.black,
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w500,
+      fontFamily: tajawalFontFamily,
+    );
+  }
+
   static TextStyle font16Blue(BuildContext context) {
     return TextStyle(
         color: AppPallete.blue,

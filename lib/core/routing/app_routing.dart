@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/app/cubit/selection_user_cubit.dart';
 import 'package:mem_admain/core/di/dependcy_injection.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
+import 'package:mem_admain/feature/exercise/ui/screens/create_excerise_screen.dart';
+import 'package:mem_admain/feature/exercise/ui/screens/get_all_excreise_screen.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/get_all_groups_response.dart';
 import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_user_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/logic/group%20chat%20cubit/group_chat_cubit.dart';
@@ -102,10 +105,20 @@ class AppRoutes {
             child: const AllGroupScreen(),
           ),
         );
- 
+
       case chatScreen:
         return MaterialPageRoute(
-          builder: (_) => const ChatScreen(),
+          builder: (_) => ChatScreen(
+            meeting: args as GetAllGroupResponseBody,
+          ),
+        );
+      case creatExceriseScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CreatExceriseScreen(),
+        );
+      case allExerciseScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AllExerciseScreen(),
         );
       default:
         return MaterialPageRoute(
