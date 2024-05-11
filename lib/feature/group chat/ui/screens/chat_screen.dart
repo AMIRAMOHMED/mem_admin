@@ -50,33 +50,24 @@ class _ChatScreenState extends State<ChatScreen> {
 
       socket!.connect();
 
-        socket!.connect();
- socket!.on("message", (_message) {
-      print("Message received: $_message");
-      setState(() {
-      
-      // final message = MessageModel(
-      //     createdAt: DateTime.now(), 
-      //     updatedAt: DateTime.now(),
-      //     id:const Uuid().v4(), 
-      //     content: _message.text, 
-      //     groupId:"${widget.meeting.id}", 
-      //     senderId:"$userId" , 
-      //     sender:List <GetAllGroupResponseBody>.empty(), 
-
-      //   );
-      //   messagesList.add(message);
-      
+      socket!.connect();
+      socket!.on("message", (data) {
+        print("Message received: $data");
+        final message = data[1];
+        final messageModel = MessageModel.fromJson(message);
+        setState(() {
+          messagesList.add(messageModel);
+        });
       });
-    });
     } catch (e) {
       print('Error connecting to socket: $e');
     }
   }
 
-void sendMessage(String messag, String groupID) {
-    socket!.emitWithAck("message", {messag, groupID, },ack: (data){});
+  void sendMessage(String messag, String groupID) {
+    socket!.emitWithAck("message", [groupID, messag], ack: (data) {});
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,8 +78,10 @@ void sendMessage(String messag, String groupID) {
         children: [
           Expanded(
             child: ListView.builder(
+              itemCount: messagesList.length,
               itemBuilder: (context, index) {
-                return const ChatBubble();
+                final message = messagesList[index];
+                return ChatBubble(message: message);
               },
             ),
           ),
@@ -104,7 +97,7 @@ void sendMessage(String messag, String groupID) {
                   onTap: () {
                     if (_message.text.isNotEmpty) {
                       sendMessage(_message.text, "${widget.meeting.id}");
-                      print ("${widget.meeting.id}");
+                      print("${widget.meeting.id}");
                       _message.clear();
                     }
                   },

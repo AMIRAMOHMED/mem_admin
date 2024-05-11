@@ -3,34 +3,33 @@ import 'package:mem_admain/core/constant/assets.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/message%20model/message_model.dart';
 
 class ChatBubble extends StatelessWidget {
-  const ChatBubble({super.key});
-
+  final MessageModel message;
+  const ChatBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.symmetric(vertical: 10.h),
+      margin: EdgeInsets.symmetric(vertical: 10.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const CircleAvatar(
-            radius: 20,
-            backgroundImage: AssetImage(Assets.profilePicLogo)
-          ),
-           SizedBox(width: 5.w),
+              radius: 20, backgroundImage: AssetImage(Assets.profilePicLogo)),
+          SizedBox(width: 5.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "الاسم",
+                  "${message.sender.firstName} ${message.sender.lastName}",
                   style: AppStyles.font13Black(context),
                 ),
                 SizedBox(height: 5.h),
                 Text(
-                  "الوقت",
+                  message.createdAt.toString(),
                   style: AppStyles.font13Black(context),
                 ),
                 SizedBox(height: 5.h),
@@ -44,7 +43,7 @@ class ChatBubble extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        "vgf bvbvb درزدزر دزردزردز زدزددرزدز زدزردرز زدزدرو زدزر  bnbnmbm nbnm زدزردرزدر  زدرزدرز زدرزدر vb",
+                        message.content,
                         textAlign: TextAlign.right,
                         style: AppStyles.font20Black(context),
                       ),

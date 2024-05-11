@@ -9,9 +9,9 @@ part of 'get_all_User.dart';
 GetAllUserResponse _$GetAllUserResponseFromJson(Map<String, dynamic> json) =>
     GetAllUserResponse(
       id: json['id'] as String,
-      firstName: json['firstName'] as String?,
-      lastName: json['lastName'] as String?,
-      type: json['type'] as String?,
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
+      type: json['type'] as String,
       profilePictureUrl: json['profilePictureUrl'] as String?,
     );
 
