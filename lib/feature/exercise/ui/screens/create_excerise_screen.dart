@@ -7,6 +7,7 @@ import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
+import 'package:mem_admain/feature/exercise/data/models/exercise_model.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/categroy_selection.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/pick_video_widget.dart';
 
@@ -18,7 +19,7 @@ class CreatExceriseScreen extends StatefulWidget {
 }
 
 class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
-  String selectedUserOption = '';
+  ExerciseType? selectedUserOption;
 
   @override
   Widget build(BuildContext context) {

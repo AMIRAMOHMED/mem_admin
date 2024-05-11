@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
+import 'package:mem_admain/feature/exercise/data/models/exercise_model.dart';
 
 class CategorySelection extends StatefulWidget {
   const CategorySelection({
     super.key,
     required this.onSelectionChanged,
   });
-  final Function(String) onSelectionChanged;
+  final Function(ExerciseType) onSelectionChanged;
 
   @override
   State<CategorySelection> createState() => _CategorySelectionState();
 }
 
 class _CategorySelectionState extends State<CategorySelection> {
-  String? currentOption;
+  ExerciseType? currentOption;
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +35,12 @@ class _CategorySelectionState extends State<CategorySelection> {
               leading: SizedBox(
                 width: 50,
                 child: Radio(
-                  value: "named in api",
+                  value: ExerciseType.breathing,
                   groupValue: currentOption,
                   onChanged: (value) {
                     setState(
                       () {
-                        currentOption = value.toString();
-
+                        currentOption = value;
                         widget.onSelectionChanged(currentOption!);
                       },
                     );
@@ -58,11 +58,11 @@ class _CategorySelectionState extends State<CategorySelection> {
                 width: 50,
                 child: Radio(
                   activeColor: AppPallete.blue,
-                  value: "named in  api",
+                  value: ExerciseType.vid_3d,
                   groupValue: currentOption,
                   onChanged: (value) {
                     setState(() {
-                      currentOption = value.toString();
+                      currentOption = value;
                       widget.onSelectionChanged(currentOption!);
                     });
                   },
@@ -78,11 +78,11 @@ class _CategorySelectionState extends State<CategorySelection> {
                 width: 50,
                 child: Radio(
                   activeColor: AppPallete.blue,
-                  value: "name on api",
+                  value: ExerciseType.yoga,
                   groupValue: currentOption,
                   onChanged: (value) {
                     setState(() {
-                      currentOption = value.toString();
+                      currentOption = value;
                       widget.onSelectionChanged(currentOption!);
                     });
                   },
