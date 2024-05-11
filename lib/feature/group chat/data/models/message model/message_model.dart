@@ -10,7 +10,7 @@ final String content;
 final String groupId;
 final String senderId;
 final GetAllUserResponse sender;
-  MessageModel({
+  MessageModel(data, {
     required this.createdAt,
     required this.updatedAt,
     required this.id,

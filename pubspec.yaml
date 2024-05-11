@@ -56,6 +56,7 @@ dependencies:
   shared_preferences: ^2.2.3
   socket_io_client: ^3.0.0-beta.2
   syncfusion_flutter_datepicker: ^25.1.41
+  uuid: ^4.4.0
   video_player: ^2.8.6
 dev_dependencies:
   flutter_lints: ^3.0.0

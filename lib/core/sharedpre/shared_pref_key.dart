@@ -1,5 +1,6 @@
 class PrefKeys {
   static const String accessToken = 'accessToken';
-  static const String isLogin = "isLogin";
+  static const String userId = "userId";
+
 
 }
