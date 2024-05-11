@@ -19,9 +19,10 @@ class CreateExerciseCubit extends Cubit<CreateExerciseStates> {
   File? imageFile;
 
   Future<void> pickImage(BuildContext context) async {
-    final status = await Permission.storage.request();
+    final status = await Permission.videos.request();
+    print(status);
     if (status.isGranted) {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final image = await ImagePicker().pickVideo(source: ImageSource.gallery);
       if (image != null) {
         imageFile = File(image.path);
         emit(CreateExerciseStates.imagePicked(File(image.path)));

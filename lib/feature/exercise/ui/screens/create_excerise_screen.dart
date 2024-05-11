@@ -156,14 +156,16 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                                 onPressed: () {
                                   final cubit =
                                       context.read<CreateExerciseCubit>();
-                                  cubit.createExercise(
-                                      nameController.text,
-                                      descriptionController.text,
-                                      selectedUserOption!);
-                                  context
-                                      .read<ExerciseCubit>()
-                                      .fetchAllExercises();
-                                  context.pushName(allExerciseScreen);
+                                  if (nameController.text.isNotEmpty &&
+                                      descriptionController.text.isNotEmpty &&
+                                      selectedUserOption != null &&
+                                      cubit.imageFile != null) {
+                                    cubit.createExercise(
+                                        nameController.text,
+                                        descriptionController.text,
+                                        selectedUserOption!);
+                                    context.pushName(allExerciseScreen);
+                                  }
                                 }),
                           ],
                         ),
