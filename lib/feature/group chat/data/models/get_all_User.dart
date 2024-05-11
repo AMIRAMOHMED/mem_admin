@@ -7,19 +7,19 @@ part 'get_all_User.g.dart';
 class GetAllUserResponse {
   final String id;
 
-  final String? firstName;
+  final String firstName;
 
-  final String? lastName;
+  final String lastName;
 
-  final String? type;
+  final String type;
 
   final String? profilePictureUrl;
 
   GetAllUserResponse({
     required this.id,
-    this.firstName,
-    this.lastName,
-    this.type,
+    required this.firstName,
+    required this.lastName,
+    required this.type,
     this.profilePictureUrl,
   });
 

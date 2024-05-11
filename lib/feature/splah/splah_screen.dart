@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/extension/context_extension.dart';
@@ -27,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> navigateToNextScreenAfterDelay() async {
     await Future.delayed(const Duration(seconds: 3));
 
-    token = await SharedPref().getString(PrefKeys.accessToken);
+    token = SharedPref().getString(PrefKeys.accessToken);
 
     if (token == null || token!.isEmpty) {
       context.pushReplacementNamed(loginScreen);
