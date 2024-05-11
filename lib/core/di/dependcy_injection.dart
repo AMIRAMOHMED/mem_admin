@@ -6,6 +6,8 @@ import 'package:mem_admain/feature/group%20chat/data/repo/group_repo.dart';
 import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_user_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/logic/group%20chat%20cubit/group_chat_cubit.dart';
+import 'package:mem_admain/feature/login/data/repository/vaildate_token_repo.dart';
+import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_cubit.dart';
 import 'package:mem_admain/feature/meetings/data/repo/creat_meeting_repo.dart';
 import 'package:mem_admain/feature/meetings/data/repo/get_all_meetings_repo.dart';
 import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
@@ -31,9 +33,9 @@ Future<void> setupGetIt() async {
 
   //check token
 
-  // getIt.registerLazySingleton<VaildateTokenRepo>(
-  //     () => VaildateTokenRepo(getIt()));
-  // getIt.registerFactory<VaildCubit>(() => VaildCubit(getIt()));
+  getIt.registerLazySingleton<VaildateTokenRepo>(
+      () => VaildateTokenRepo(getIt()));
+  getIt.registerFactory<VaildCubit>(() => VaildCubit(getIt()));
 
   // getIt.registerFactory<RefreshTokenCubit>(() => RefreshTokenCubit(getIt()));
 

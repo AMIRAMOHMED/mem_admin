@@ -9,6 +9,7 @@ part of 'token_vaildate_response_body.dart';
 TokenVaildateResponseBody _$TokenVaildateResponseBodyFromJson(
         Map<String, dynamic> json) =>
     TokenVaildateResponseBody(
+      json['success'] as bool,
       errorCode: json['errorCode'] as String?,
       error: json['error'] as String?,
     );
@@ -18,4 +19,5 @@ Map<String, dynamic> _$TokenVaildateResponseBodyToJson(
     <String, dynamic>{
       'errorCode': instance.errorCode,
       'error': instance.error,
+      'success': instance.success,
     };

@@ -8,8 +8,9 @@ class TokenVaildateResponseBody{
 
   final String ?errorCode;
   final String ?error;
+  final bool  success;
 
-  TokenVaildateResponseBody({required this.errorCode, required this.error});
+  TokenVaildateResponseBody(this.success, {required this.errorCode, required this.error});
 
     factory TokenVaildateResponseBody.fromJson(Map<String, dynamic> json) =>
       _$TokenVaildateResponseBodyFromJson(json);

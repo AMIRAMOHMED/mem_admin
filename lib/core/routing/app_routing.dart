@@ -11,6 +11,7 @@ import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/crea
 import 'package:mem_admain/feature/group%20chat/logic/group%20chat%20cubit/group_chat_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/ui/screens/all_group_screen.dart';
 import 'package:mem_admain/feature/group%20chat/ui/screens/chat_screen.dart';
+import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_cubit.dart';
 import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/ui/screens/all_meeting_screen.dart';
@@ -74,7 +75,10 @@ class AppRoutes {
         );
       case splashScreen:
         return MaterialPageRoute(
-          builder: (_) => const SplashScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<VaildCubit>(),
+            child: const SplashScreen(),
+          ),
         );
       case createGroupScreen:
         return MaterialPageRoute(

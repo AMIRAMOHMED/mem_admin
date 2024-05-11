@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-
 extension ContextExt on BuildContext {
-
-Future<dynamic> pushName(String routeName, {Object? arguments}) {
+  Future<dynamic> pushName(String routeName, {Object? arguments}) {
     return Navigator.of(this).pushNamed(routeName, arguments: arguments);
   }
 

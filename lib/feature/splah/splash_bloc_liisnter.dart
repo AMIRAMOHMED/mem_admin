@@ -10,7 +10,6 @@ import 'package:mem_admain/feature/login/logic/vaildation_cubit/cubit/vaild_stat
 
 class SplashBlocListener extends StatelessWidget {
   const SplashBlocListener({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocListener<VaildCubit, VaildState>(
