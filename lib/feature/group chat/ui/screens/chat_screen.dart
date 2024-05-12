@@ -12,6 +12,7 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../../../core/networking/api_services.dart';
 import '../../data/models/get_all_groups_response.dart';
+import 'package:mem_admain/core/networking/api_constant.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.meeting});
@@ -31,6 +32,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
   List<MessageModel> messagesList = [];
 
+  bool sending = false;
+
   @override
   void initState() {
     super.initState();
@@ -40,7 +43,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void connect() {
     try {
       socket = IO.io(
-        'https://mem.hossamohsen.me',
+        ApiConstants.apiBaseURL,
         IO.OptionBuilder()
             .disableAutoConnect()
             .enableForceNewConnection()
@@ -62,6 +65,7 @@ class _ChatScreenState extends State<ChatScreen> {
         setState(() {
           messagesList.add(messageModel);
         });
+        _scrollToBottom();
       });
     } catch (e) {
       print('Error connecting to socket: $e');
@@ -69,10 +73,13 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void sendMessage(String messag, String groupID) {
-    socket!.emitWithAck("message", [groupID, messag], ack: (data) {});
+    sending = true;
+    socket!.emitWithAck("message", [groupID, messag], ack: (data) {
+      sending = false;
+    });
   }
 
-void _scrollToBottom() {
+  void _scrollToBottom() {
     if (_controller.hasClients) {
       _controller.animateTo(
         _controller.position.maxScrollExtent,
@@ -81,20 +88,15 @@ void _scrollToBottom() {
       );
     }
   }
+
+  Stream<List<MessageModel>> getMessagesStream() {
+    final response =
+        _messageRepo.getAllMessageRepo("Bearer $token", "${widget.meeting.id}");
+    return response;
+  }
+
   @override
   Widget build(BuildContext context) {
-        final _controller = ScrollController();
-
-
-    
-    Stream<List<MessageModel>> getMessagesStream() {
-     final  response = _messageRepo.getAllMessageRepo(
-          "Bearer $token", "${widget.meeting.id}");
-      return response as Stream<List<MessageModel>>;
-    }
-
-
-
     return Scaffold(
       appBar: AppbarWidget(
         text: " ${widget.meeting.name}",
@@ -136,11 +138,10 @@ void _scrollToBottom() {
                 hintStyle: AppStyles.font16LightGray(context),
                 prefix: GestureDetector(
                   onTap: () {
-                    if (_message.text.isNotEmpty) {
+                    if (_message.text.isNotEmpty && !sending) {
                       sendMessage(_message.text, "${widget.meeting.id}");
                       print("${widget.meeting.id}");
                       _message.clear();
-                      _scrollToBottom();
                     }
                   },
                   child: Image.asset(Assets.sendIcon),
