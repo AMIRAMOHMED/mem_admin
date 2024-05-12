@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mem_admain/core/constant/assets.dart';
+import 'package:mem_admain/core/constant/constants.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
@@ -15,7 +16,7 @@ class ChatBubleForOther extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 10.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end, 
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Expanded(
             child: Column(
@@ -23,13 +24,13 @@ class ChatBubleForOther extends StatelessWidget {
               children: [
                 Text(
                   "${message.sender.firstName} ${message.sender.lastName}",
-                  textAlign: TextAlign.right, 
+                  textAlign: TextAlign.right,
                   style: AppStyles.font13Black(context),
                 ),
                 SizedBox(height: 5.h),
                 Text(
-                  message.createdAt.toString(),
-                  textAlign: TextAlign.right, 
+                  Constants.dateFormat.format(message.createdAt),
+                  textAlign: TextAlign.right,
                   style: AppStyles.font13Black(context),
                 ),
                 SizedBox(height: 5.h),
