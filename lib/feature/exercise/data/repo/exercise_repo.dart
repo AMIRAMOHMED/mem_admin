@@ -22,8 +22,8 @@ class ExerciseRepo {
   Future<ApiResult<ExerciseModel>> createExercise(String token, String name,
       String description, ExerciseType type, File file) async {
     try {
-      final respons = await apiService.createExercise(
-          token, name, description, type.toString().toUpperCase(), file);
+      final respons = await apiService.createExercise("Bearer $token", name,
+          description, type.toString().toUpperCase(), file);
       return ApiResult.success(respons);
     } catch (error) {
       return ApiResult.failure(ErrorHandler.handle(error));
