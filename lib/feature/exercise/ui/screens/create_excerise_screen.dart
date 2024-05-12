@@ -123,10 +123,13 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                             SizedBox(
                               height: 15.h,
                             ),
-                            CategorySelection(
-                              onSelectionChanged: (selectedOption) {
-                                selectedUserOption = selectedOption;
-                              },
+                            Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: CategorySelection(
+                                onSelectionChanged: (selectedOption) {
+                                  selectedUserOption = selectedOption;
+                                },
+                              ),
                             ),
                             SizedBox(
                               height: 15.h,

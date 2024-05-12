@@ -123,7 +123,10 @@ class _MeetingScreenState extends State<MeetingScreen> {
                   SizedBox(
                     height: 15.h,
                   ),
-                  const UserSelectionBox(),
+                  const Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: UserSelectionBox(),
+                  ),
                   SizedBox(
                     height: 30.h,
                   ),
@@ -144,11 +147,11 @@ class _MeetingScreenState extends State<MeetingScreen> {
 
                         context.pushReplacementNamed(allMeetingScreen);
                       } else {
-showDialog(
-      context: context,
-      builder: (context) => const CustomAlertDialog(),
-    );
-  }                      
+                        showDialog(
+                          context: context,
+                          builder: (context) => const CustomAlertDialog(),
+                        );
+                      }
                     },
                   ),
                   SizedBox(

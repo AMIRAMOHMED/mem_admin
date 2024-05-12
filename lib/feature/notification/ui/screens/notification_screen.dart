@@ -104,7 +104,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         SizedBox(
                           height: 15.h,
                         ),
-                        const UserSelectionBox(),
+                        const Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: UserSelectionBox(),
+                        ),
                         SizedBox(
                           height: 40.h,
                         ),
