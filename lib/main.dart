@@ -9,7 +9,6 @@ import 'package:mem_admain/core/sharedpre/shared_pref.dart';
 import 'package:mem_admain/core/theme/app_theme.dart';
 import 'package:mem_admain/firebase_options.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -23,8 +22,6 @@ void main() async {
   runApp(const MemAdmain());
 }
 
-
-
 final GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();
 
 class MemAdmain extends StatelessWidget {
@@ -37,7 +34,6 @@ class MemAdmain extends StatelessWidget {
       theme: AppTheme.darkTthemeMode,
       navigatorKey: navigator,
       onGenerateRoute: AppRoutes().onGenerateRoute,
-      initialRoute: createGroupScreen,
     );
   }
 }

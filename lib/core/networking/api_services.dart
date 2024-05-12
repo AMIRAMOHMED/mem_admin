@@ -5,6 +5,7 @@ import 'package:mem_admain/feature/group%20chat/data/models/creat_group_response
 import 'package:mem_admain/feature/group%20chat/data/models/delet_group_response_body.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/get_all_User.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/get_all_groups_response.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/message%20model/message_model.dart';
 import 'package:mem_admain/feature/login/data/models/token_vaildate_response_body.dart';
 import 'package:mem_admain/feature/meetings/data/models/delet_meeting_respons.dart';
 import 'package:mem_admain/feature/meetings/data/models/get_all_meeting_respons_body.dart';
@@ -36,10 +37,6 @@ abstract class ApiService {
     @Body() TokenRequestBody tokenRequestBody,
   );
 
-  // @POST(ApiConstants.refreshToken)
-  // Future<TokenRefreshResponseBody> refreshToken(
-  //   @Body() TokenRequestBody tokenRequestBody,
-  // );
 
   @POST(ApiConstants.setFireBaseId)
   Future setFirebaseId(
@@ -98,6 +95,15 @@ abstract class ApiService {
 
   @DELETE("${ApiConstants.deleteGroup}{id}")
   Future<DeletGroupResponse> deletGroup(
+    @Header('Authorization') String token,
+    @Path("id") String id,
+  );
+
+
+
+
+  @GET("${ApiConstants.getAllMessage}{id}/messages")
+  Stream<List<MessageModel>> getAllMessage(
     @Header('Authorization') String token,
     @Path("id") String id,
   );

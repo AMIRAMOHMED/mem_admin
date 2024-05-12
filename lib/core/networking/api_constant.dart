@@ -14,6 +14,7 @@ class ApiConstants {
   static const String creatGroup = "groups/new";
   static const String getAllGroup = "groups/all";
   static const String deleteGroup = "groups/";
+  static const String getAllMessage="groups/";
 }
 
 class ApiErrors {
