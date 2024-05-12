@@ -61,7 +61,6 @@ class NotificationItem extends StatelessWidget {
                         .deletNotification(notification.id);
 
                     context.pushReplacementNamed(homeScreen);
-                    context.read<AllNotificationCubit>().allNotificationsStream;
                   },
                 ),
               ],

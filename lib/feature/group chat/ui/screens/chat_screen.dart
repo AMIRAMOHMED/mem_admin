@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:mem_admain/core/constant/assets.dart';
 import 'package:mem_admain/core/networking/dio_factroy.dart';
@@ -8,6 +10,7 @@ import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/message%20model/message_model.dart';
 import 'package:mem_admain/feature/group%20chat/data/repo/message_repo.dart';
 import 'package:mem_admain/feature/group%20chat/ui/widgets/chat_buble.dart';
+import 'package:mem_admain/feature/group%20chat/ui/widgets/chat_buble.for_other.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../../../core/networking/api_services.dart';
@@ -25,6 +28,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final MessageRepo _messageRepo = MessageRepo(ApiService(DioFactory.getDio()));
   final token = SharedPref().getString(PrefKeys.accessToken);
+
   final userId = SharedPref().getString(PrefKeys.userId);
   IO.Socket? socket;
   final TextEditingController _message = TextEditingController();
@@ -38,6 +42,8 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     connect();
+    print(userId);
+    _scrollToBottom();
   }
 
   void connect() {
@@ -65,10 +71,9 @@ class _ChatScreenState extends State<ChatScreen> {
         setState(() {
           messagesList.add(messageModel);
         });
-        _scrollToBottom();
       });
     } catch (e) {
-      print('Error connecting to socket: $e');
+      print(e);
     }
   }
 
@@ -83,8 +88,8 @@ class _ChatScreenState extends State<ChatScreen> {
     if (_controller.hasClients) {
       _controller.animateTo(
         _controller.position.maxScrollExtent,
-        curve: Curves.easeIn,
-        duration: const Duration(milliseconds: 10000),
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.easeOut,
       );
     }
   }
@@ -122,7 +127,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   itemCount: messagesList.length,
                   itemBuilder: (context, index) {
                     final message = messagesList[index];
-                    return ChatBubble(message: message);
+
+                    return userId == messagesList[index].senderId
+                        ? ChatBubble(message: message)
+                        : ChatBubleForOther(message: message);
                   },
                 );
               },
@@ -143,6 +151,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       print("${widget.meeting.id}");
                       _message.clear();
                     }
+                    _scrollToBottom();
                   },
                   child: Image.asset(Assets.sendIcon),
                 ),

@@ -44,10 +44,8 @@ class GroupChatItem extends StatelessWidget {
                 context
                 .read<GroupChatCubit>()
                 .deletMeeting('${allGroups.id}');
-                context.pushName(allGroupScreen);
-                  context
-                .read<GroupChatCubit>()
-                .allGroupsStream;
+                context.pushReplacementNamed(allGroupScreen);
+                 
               },
             ),
           ),

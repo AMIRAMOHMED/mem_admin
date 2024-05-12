@@ -8,6 +8,7 @@ import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
+import 'package:mem_admain/feature/exercise/ui/widgets/custom_alert_dialog.dart';
 import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/ui/widgets/chosse_users_widget.dart';
 
@@ -44,7 +45,7 @@ class _CreateGroupChatScreenState extends State<CreateGroupChatScreen> {
                 buttonText: " عرض جميع المجموعات ",
                 textStyle: AppStyles.font20Black(context),
                 onPressed: () {
-                  context.pushName(allGroupScreen);
+                  context.pushReplacementNamed(allGroupScreen);
                 },
               ),
               SizedBox(
@@ -118,9 +119,19 @@ class _CreateGroupChatScreenState extends State<CreateGroupChatScreen> {
                             buttonHeight: 50.h,
                             textStyle: AppStyles.font20Black(context),
                             onPressed: () {
-                              context
-                                  .read<CreatGroupCubit>()
-                                  .emitCreatGroupState(selecteddUserIdd);
+                              if (selecteddUserIdd.isNotEmpty &&
+                                  groupName.text.isNotEmpty) {
+                                context
+                                    .read<CreatGroupCubit>()
+                                    .emitCreatGroupState(selecteddUserIdd);
+                                context.pushReplacementNamed(allGroupScreen);
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) =>
+                                      const CustomAlertDialog(),
+                                );
+                              }
                             }),
                       ],
                     ),

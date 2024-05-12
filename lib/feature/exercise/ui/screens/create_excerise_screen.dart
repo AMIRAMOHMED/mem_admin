@@ -10,8 +10,8 @@ import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
 import 'package:mem_admain/feature/exercise/data/models/exercise_model.dart';
 import 'package:mem_admain/feature/exercise/logic/create/create_exercise_cubit.dart';
-import 'package:mem_admain/feature/exercise/logic/exercise_cubit.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/categroy_selection.dart';
+import 'package:mem_admain/feature/exercise/ui/widgets/custom_alert_dialog.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/pick_video_widget.dart';
 
 class CreatExceriseScreen extends StatefulWidget {
@@ -47,7 +47,7 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                     buttonText: " عرض جميع التمارين ",
                     textStyle: AppStyles.font20Black(context),
                     onPressed: () {
-                      context.pushName(allExerciseScreen);
+                      context.pushReplacementNamed(allExerciseScreen);
                     },
                   ),
                   SizedBox(
@@ -164,7 +164,14 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                                         nameController.text,
                                         descriptionController.text,
                                         selectedUserOption!);
-                                    context.pushName(allExerciseScreen);
+                                    context.pushReplacementNamed(
+                                        allExerciseScreen);
+                                  } else {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          const CustomAlertDialog(),
+                                    );
                                   }
                                 }),
                           ],

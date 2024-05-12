@@ -9,6 +9,7 @@ import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/user_selection_box.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
+import 'package:mem_admain/feature/exercise/ui/widgets/custom_alert_dialog.dart';
 import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/ui/widgets/hour_pick.dart';
@@ -16,7 +17,7 @@ import 'package:mem_admain/feature/meetings/ui/widgets/hour_pick.dart';
 import '../widgets/data_pick.dart';
 
 class MeetingScreen extends StatefulWidget {
-  const MeetingScreen({super.key});
+  const MeetingScreen({Key? key}) : super(key: key);
 
   @override
   State<MeetingScreen> createState() => _MeetingScreenState();
@@ -26,6 +27,7 @@ late TextEditingController meetingName;
 late TextEditingController urlOfMeeting;
 String pickedData = "";
 TimeOfDay selectedTime = TimeOfDay.now();
+bool _validURL = false;
 
 class _MeetingScreenState extends State<MeetingScreen> {
   @override
@@ -56,7 +58,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                     buttonText: " عرض جميع الاجتماعات ",
                     textStyle: AppStyles.font20Black(context),
                     onPressed: () {
-                      context.pushName(allMeetingScreen);
+                      context.pushReplacementNamed(allMeetingScreen);
                     },
                   ),
                   PickTime(
@@ -101,11 +103,17 @@ class _MeetingScreenState extends State<MeetingScreen> {
                     style: AppStyles.font13Black(context),
                     textAlign: TextAlign.right,
                     controller: urlOfMeeting,
+                    onChanged: (value) {
+                      setState(() {
+                        _validURL = Uri.parse(value).isAbsolute;
+                      });
+                    },
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: AppPallete.white,
                       hintStyle: AppStyles.font13Black(context),
                       hintText: 'ضع رابط الاجتماع',
+                      errorText: _validURL ? null : 'رابط غير صالح',
                     ),
                   ),
                   SizedBox(
@@ -126,13 +134,21 @@ class _MeetingScreenState extends State<MeetingScreen> {
                     buttonText: "ارسال الموعد",
                     textStyle: AppStyles.font20Black(context),
                     onPressed: () {
-                      context.read<CreatMeetingCubit>().emitCreatMeetingState(
-                          context, pickedData, selectedTime);
+                      if (meetingName.text.isNotEmpty &&
+                          urlOfMeeting.text.isNotEmpty &&
+                          pickedData.isNotEmpty &&
+                          selectedTime != TimeOfDay.now() &&
+                          _validURL) {
+                        context.read<CreatMeetingCubit>().emitCreatMeetingState(
+                            context, pickedData, selectedTime);
 
-                       context.read<GetAllMeetingCubit>().fetchMeetings;
-                       context.pushName(allMeetingScreen);
-
-
+                        context.pushReplacementNamed(allMeetingScreen);
+                      } else {
+showDialog(
+      context: context,
+      builder: (context) => const CustomAlertDialog(),
+    );
+  }                      
                     },
                   ),
                   SizedBox(

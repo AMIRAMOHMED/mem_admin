@@ -9,6 +9,7 @@ import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
 import 'package:mem_admain/core/widgets/user_selection_box.dart';
+import 'package:mem_admain/feature/exercise/ui/widgets/custom_alert_dialog.dart';
 import 'package:mem_admain/feature/notification/logic/create%20notification%20cubit/notfication_cubit.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -108,21 +109,30 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           height: 40.h,
                         ),
                         AppTextButton(
-                            buttonText: "أضافة الاشعار",
-                            buttonWidth: 100.w,
-                            backgroundColor: AppPallete.white,
-                            verticalPadding: 0,
-                            horizontalPadding: 0,
-                            borderRadius: 40,
-                            buttonHeight: 50.h,
-                            textStyle: AppStyles.font20Black(context),
-                            onPressed: () {
+                          buttonText: "أضافة الاشعار",
+                          buttonWidth: 100.w,
+                          backgroundColor: AppPallete.white,
+                          verticalPadding: 0,
+                          horizontalPadding: 0,
+                          borderRadius: 40,
+                          buttonHeight: 50.h,
+                          textStyle: AppStyles.font20Black(context),
+                          onPressed: () {
+                            if (messageNotification.text.isNotEmpty) {
                               context
                                   .read<NotficationCubit>()
                                   .emitCreatNotificationState(context);
 
-                              context.pushName(homeScreen);
-                            }),
+                              context
+                                  .pushReplacementNamed(allNotificationScreen);
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (context) => const CustomAlertDialog(),
+                              );
+                            }
+                          },
+                        )
                       ],
                     ),
                   ),

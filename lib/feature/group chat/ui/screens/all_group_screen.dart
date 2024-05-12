@@ -46,7 +46,7 @@ class AllGroupScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(onTap: (){ context.pushName(chatScreen, arguments: allGroupsList[index]);                       
+                          child: GestureDetector(onTap: (){ context.pushReplacementNamed(chatScreen, arguments: allGroupsList[index]);                       
 },
                             child: GroupChatItem(
                               allGroups: allGroupsList[index],
