@@ -1,5 +1,5 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.configuration.updateBuildConfiguration": "disabled",
     "dart_data_class_generator.fromJson.enabled": true,
     "dart_data_class_generator.toJson.enabled": true,
     "files.exclude": {

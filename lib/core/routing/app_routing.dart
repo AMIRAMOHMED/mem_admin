@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/app/cubit/selection_user_cubit.dart';
 import 'package:mem_admain/core/di/dependcy_injection.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
+import 'package:mem_admain/feature/exercise/logic/create/create_exercise_cubit.dart';
+import 'package:mem_admain/feature/exercise/logic/exercise_cubit.dart';
 import 'package:mem_admain/feature/exercise/ui/screens/create_excerise_screen.dart';
 import 'package:mem_admain/feature/exercise/ui/screens/get_all_excreise_screen.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/get_all_groups_response.dart';
@@ -118,12 +120,15 @@ class AppRoutes {
         );
       case creatExceriseScreen:
         return MaterialPageRoute(
-          builder: (_) => const CreatExceriseScreen(),
-        );
+            builder: (_) => BlocProvider(
+                create: (context) => getIt<CreateExerciseCubit>(),
+                child: const CreatExceriseScreen()));
       case allExerciseScreen:
         return MaterialPageRoute(
-          builder: (_) => const AllExerciseScreen(),
-        );
+            builder: (_) => BlocProvider(
+                  create: (context) => getIt<ExerciseCubit>(),
+                  child: const AllExerciseScreen(),
+                ));
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

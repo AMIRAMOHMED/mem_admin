@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:mem_admain/core/networking/api_constant.dart';
+import 'package:mem_admain/feature/exercise/data/models/exercise_model.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/creat_group_request_body.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/creat_group_response_body.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/delet_group_response_body.dart';
@@ -33,7 +36,7 @@ abstract class ApiService {
   );
 
   @POST(ApiConstants.vaildateToken)
-  Future <TokenVaildateResponseBody>vailadateToken(
+  Future<TokenVaildateResponseBody> vailadateToken(
     @Body() TokenRequestBody tokenRequestBody,
   );
 
@@ -106,5 +109,40 @@ abstract class ApiService {
   Stream<List<MessageModel>> getAllMessage(
     @Header('Authorization') String token,
     @Path("id") String id,
+  );
+  //Exercises
+  @GET(ApiConstants.getAllExercises)
+  Future<List<ExerciseModel>> getAllExercises(
+    @Header('Authorization') String token,
+  );
+
+  //delete exercise
+  @DELETE("${ApiConstants.deleteExercise}{id}")
+  Future<DeletGroupResponse> deletExercise(
+    @Header('Authorization') String token,
+    @Path("id") String id,
+  );
+
+  //create exercise
+  @POST(ApiConstants.createExercise)
+  @MultiPart()
+  Future<ExerciseModel> createExercise(
+    @Header('Authorization') String token,
+    @Part() String name,
+    @Part() String description,
+    @Part() String type,
+    @Part() File file,
+  );
+
+  //update exercise
+  @PUT("${ApiConstants.updateExercise}{id}")
+  @MultiPart()
+  Future<ExerciseModel> updateExercise(
+    @Header('Authorization') String token,
+    @Path("id") String id,
+    @Part() String name,
+    @Part() String description,
+    @Part() String type,
+    @Part() File file,
   );
 }

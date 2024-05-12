@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mem_admain/core/extension/context_extension.dart';
 
 import 'package:mem_admain/core/extension/num_extension.dart';
+import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
+import 'package:mem_admain/feature/exercise/data/models/exercise_model.dart';
+import 'package:mem_admain/feature/exercise/logic/exercise_cubit.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/video_player_widget.dart';
 
 class ExerciseDetailsItem extends StatelessWidget {
-  const ExerciseDetailsItem(
-      {super.key,
-      required this.nameExcreise,
-      required this.descraptionExercise,
-      required this.videoAssets});
-  final String nameExcreise, descraptionExercise, videoAssets;
+  final ExerciseModel exercise;
+  const ExerciseDetailsItem({
+    super.key,
+    required this.exercise,
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,16 +31,17 @@ class ExerciseDetailsItem extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SubTitleWidget(text: nameExcreise),
+            SubTitleWidget(text: exercise.name),
             SizedBox(
               height: 15.h,
             ),
             VideoPlayerItem(
-              videoAssets: videoAssets,
+              videoAssets: exercise.mediaUrl,
+              videoPlayerType: VideoPlayerType.network,
             ),
             const SubTitleWidget(text: ":وصف التمرين"),
             Text(
-              descraptionExercise,
+              exercise.description,
               textAlign: TextAlign.right,
               style: AppStyles.font20Black(context),
             ),
@@ -51,7 +56,10 @@ class ExerciseDetailsItem extends StatelessWidget {
                     size: 30.h,
                   ),
                   color: Colors.red,
-                  onPressed: () {}),
+                  onPressed: () {
+                    context.read<ExerciseCubit>().deleteExercise(exercise.id);
+                    context.pushReplacementNamed(allExerciseScreen);
+                  }),
             ),
           ],
         ),

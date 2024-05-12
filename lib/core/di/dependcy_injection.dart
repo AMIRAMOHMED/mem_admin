@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mem_admain/core/networking/dio_factroy.dart';
+import 'package:mem_admain/feature/exercise/data/repo/exercise_repo.dart';
+import 'package:mem_admain/feature/exercise/logic/create/create_exercise_cubit.dart';
+import 'package:mem_admain/feature/exercise/logic/exercise_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/data/repo/get_all_user_repo.dart';
 import 'package:mem_admain/feature/group%20chat/data/repo/group_repo.dart';
 import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_user_cubit.dart';
@@ -75,4 +78,10 @@ Future<void> setupGetIt() async {
 
   getIt.registerFactory<CreatGroupCubit>(() => CreatGroupCubit(getIt()));
   getIt.registerFactory<GroupChatCubit>(() => GroupChatCubit(getIt()));
+
+  // Exercise
+  getIt.registerLazySingleton<ExerciseRepo>(() => ExerciseRepo(getIt()));
+  getIt
+      .registerFactory<CreateExerciseCubit>(() => CreateExerciseCubit(getIt()));
+  getIt.registerFactory<ExerciseCubit>(() => ExerciseCubit(getIt()));
 }

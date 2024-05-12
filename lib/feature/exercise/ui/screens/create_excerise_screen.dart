@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/extension/context_extension.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
@@ -7,6 +8,9 @@ import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:mem_admain/core/widgets/app_bar.dart';
 import 'package:mem_admain/core/widgets/app_text_button.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
+import 'package:mem_admain/feature/exercise/data/models/exercise_model.dart';
+import 'package:mem_admain/feature/exercise/logic/create/create_exercise_cubit.dart';
+import 'package:mem_admain/feature/exercise/logic/exercise_cubit.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/categroy_selection.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/pick_video_widget.dart';
 
@@ -18,7 +22,10 @@ class CreatExceriseScreen extends StatefulWidget {
 }
 
 class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
-  String selectedUserOption = '';
+  ExerciseType? selectedUserOption;
+
+  final nameController = TextEditingController();
+  final descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +86,7 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                             TextFormField(
                               style: AppStyles.font13Black(context),
                               textAlign: TextAlign.right,
+                              controller: nameController,
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: AppPallete.white,
@@ -98,6 +106,7 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                             TextFormField(
                               style: AppStyles.font13Black(context),
                               textAlign: TextAlign.right,
+                              controller: descriptionController,
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: AppPallete.white,
@@ -144,7 +153,20 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                                 borderRadius: 40,
                                 buttonHeight: 50.h,
                                 textStyle: AppStyles.font20Black(context),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  final cubit =
+                                      context.read<CreateExerciseCubit>();
+                                  if (nameController.text.isNotEmpty &&
+                                      descriptionController.text.isNotEmpty &&
+                                      selectedUserOption != null &&
+                                      cubit.imageFile != null) {
+                                    cubit.createExercise(
+                                        nameController.text,
+                                        descriptionController.text,
+                                        selectedUserOption!);
+                                    context.pushName(allExerciseScreen);
+                                  }
+                                }),
                           ],
                         ),
                       ),
