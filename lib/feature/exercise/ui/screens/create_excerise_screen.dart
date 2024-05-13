@@ -12,6 +12,7 @@ import 'package:mem_admain/feature/exercise/data/models/exercise_model.dart';
 import 'package:mem_admain/feature/exercise/logic/create/create_exercise_cubit.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/categroy_selection.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/custom_alert_dialog.dart';
+import 'package:mem_admain/feature/exercise/ui/widgets/excerise_linster.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/pick_video_widget.dart';
 
 class CreatExceriseScreen extends StatefulWidget {
@@ -167,8 +168,6 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                                         nameController.text,
                                         descriptionController.text,
                                         selectedUserOption!);
-                                    context.pushReplacementNamed(
-                                        allExerciseScreen);
                                   } else {
                                     showDialog(
                                       context: context,
@@ -182,6 +181,7 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                       ),
                     ),
                   ),
+                  const ExceriseLinster()
                 ],
               ),
             ),

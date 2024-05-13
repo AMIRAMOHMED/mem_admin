@@ -12,13 +12,26 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        DateTime updatedAtPlusTwoHours = message.updatedAt.add(const Duration(hours: 3));
+
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CircleAvatar(
-              radius: 20, backgroundImage: AssetImage(Assets.profilePicLogo)),
+          message.sender.profilePictureUrl == null
+              ? const CircleAvatar(
+                  radius: 20, backgroundImage: AssetImage(Assets.profilePicLogo))
+              : Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  height: 30.h,
+                  width: 30.w,
+                  child: Image.network(
+                    message.sender.profilePictureUrl!,
+                  ),
+                ),
           SizedBox(width: 5.w),
           Expanded(
             child: Column(
@@ -30,7 +43,7 @@ class ChatBubble extends StatelessWidget {
                 ),
                 SizedBox(height: 5.h),
                 Text(
-                  Constants.dateFormat.format(message.createdAt),
+                  Constants.dateFormat.format(updatedAtPlusTwoHours),
                   style: AppStyles.font13Black(context),
                 ),
                 SizedBox(height: 5.h),

@@ -45,6 +45,10 @@ class CreatMeetingCubit extends Cubit<CreatMeetingState> {
       emit(CreatMeetingState.error(error: error.apiErrorModel.message ?? ''));
     });
   }
+  @override
+  Future<void> close() {
+    return super.close();
+  }
 }
 
 String combineDateAndTime(String date, TimeOfDay time) {
@@ -56,4 +60,7 @@ String combineDateAndTime(String date, TimeOfDay time) {
   String formattedDateTime = dateTime.toUtc().toIso8601String();
 
   return formattedDateTime;
+
+
+  
 }

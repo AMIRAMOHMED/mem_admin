@@ -58,7 +58,6 @@ class ExerciseDetailsItem extends StatelessWidget {
                   color: Colors.red,
                   onPressed: () {
                     context.read<ExerciseCubit>().deleteExercise(exercise.id);
-                    context.pushReplacementNamed(allExerciseScreen);
                   }),
             ),
           ],

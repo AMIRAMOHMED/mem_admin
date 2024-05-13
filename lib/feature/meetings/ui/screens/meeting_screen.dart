@@ -15,6 +15,7 @@ import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/ge
 import 'package:mem_admain/feature/meetings/ui/widgets/hour_pick.dart';
 
 import '../widgets/data_pick.dart';
+import '../widgets/meeting_linster.dart';
 
 class MeetingScreen extends StatefulWidget {
   const MeetingScreen({Key? key}) : super(key: key);
@@ -144,8 +145,6 @@ class _MeetingScreenState extends State<MeetingScreen> {
                           _validURL) {
                         context.read<CreatMeetingCubit>().emitCreatMeetingState(
                             context, pickedData, selectedTime);
-
-                        context.pushReplacementNamed(allMeetingScreen);
                       } else {
                         showDialog(
                           context: context,
@@ -157,6 +156,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                   SizedBox(
                     height: 30.h,
                   ),
+                  const MeetingLinster()
                 ],
               ),
             ),

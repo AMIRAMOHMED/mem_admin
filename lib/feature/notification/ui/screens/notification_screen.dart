@@ -12,6 +12,8 @@ import 'package:mem_admain/core/widgets/user_selection_box.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/custom_alert_dialog.dart';
 import 'package:mem_admain/feature/notification/logic/create%20notification%20cubit/notfication_cubit.dart';
 
+import '../widgets/notification_linster.dart';
+
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
 
@@ -126,8 +128,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                   .read<NotficationCubit>()
                                   .emitCreatNotificationState(context);
 
-                              context
-                                  .pushReplacementNamed(allNotificationScreen);
+                              
                             } else {
                               showDialog(
                                 context: context,
@@ -141,6 +142,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   ),
                 ),
               ),
+              const NotificationLinster()
             ],
           ),
         ),

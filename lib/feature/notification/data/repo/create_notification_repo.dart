@@ -20,6 +20,7 @@ Future<ApiResult<NotificationResponseBody>> createNotificationrepo(
 ) async {
   try{
   final reponse =await _apiService.createNotification(token, notificationRequestModel);
+  print(token);
   return ApiResult.success(reponse);
   }
   catch(error){

@@ -36,4 +36,9 @@ class NotficationCubit extends Cubit<NotficationState> {
       emit(NotficationState.error(error: error.apiErrorModel.message ?? ''));
     });
   }
+  @override
+  Future<void> close() {
+    messageNotification.dispose();
+    return super.close();
+  }
 }

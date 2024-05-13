@@ -11,6 +11,7 @@ import 'package:mem_admain/core/widgets/sub_title_widget.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/custom_alert_dialog.dart';
 import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/ui/widgets/chosse_users_widget.dart';
+import 'package:mem_admain/feature/group%20chat/ui/widgets/group_lisnter.dart';
 
 class CreateGroupChatScreen extends StatefulWidget {
   const CreateGroupChatScreen({super.key});
@@ -111,12 +112,12 @@ class _CreateGroupChatScreenState extends State<CreateGroupChatScreen> {
                         ),
                         AppTextButton(
                             buttonText: "أضافة المجموعة",
-                            buttonWidth: 100.w,
+                            buttonWidth: 150.w,
                             backgroundColor: AppPallete.white,
                             verticalPadding: 0,
                             horizontalPadding: 0,
                             borderRadius: 40,
-                            buttonHeight: 50.h,
+                            buttonHeight: 100.h,
                             textStyle: AppStyles.font20Black(context),
                             onPressed: () {
                               if (selecteddUserIdd.isNotEmpty &&
@@ -124,7 +125,6 @@ class _CreateGroupChatScreenState extends State<CreateGroupChatScreen> {
                                 context
                                     .read<CreatGroupCubit>()
                                     .emitCreatGroupState(selecteddUserIdd);
-                                context.pushReplacementNamed(allGroupScreen);
                               } else {
                                 showDialog(
                                   context: context,
@@ -138,6 +138,10 @@ class _CreateGroupChatScreenState extends State<CreateGroupChatScreen> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 40.h,
+              ),
+              const CreateGroupLinster(),
             ],
           ),
         ),
