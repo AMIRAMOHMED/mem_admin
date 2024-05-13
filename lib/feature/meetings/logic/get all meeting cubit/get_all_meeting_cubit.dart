@@ -58,4 +58,6 @@ class GetAllMeetingCubit extends Cubit<GetAllMeetingState> {
     _allMeetingsController.close();
     return super.close();
   }
+
+  
 }

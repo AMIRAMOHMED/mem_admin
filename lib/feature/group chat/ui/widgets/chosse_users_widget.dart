@@ -45,11 +45,11 @@ class _ChooseUsersState extends State<ChooseUsers> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: user.firstName!,
+                          text: user.firstName,
                           style: AppStyles.font20Black(context),
                         ),
                         TextSpan(
-                          text: ' (${getUserTypeLabel(user.type!)})',
+                          text: ' (${getUserTypeLabel(user.type)})',
                           style: AppStyles.font16LightGray(context),
                         ),
                       ],

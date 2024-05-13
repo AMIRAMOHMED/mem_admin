@@ -5,16 +5,15 @@ import 'package:mem_admain/core/extension/context_extension.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
-import 'package:mem_admain/feature/login/logic/login_cubit/login_state.dart';
+import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_cubit.dart';
+import 'package:mem_admain/feature/group%20chat/logic/creat%20group%20cubit/creat_group_state.dart';
 
-import '../../logic/login_cubit/login_cubit.dart';
-
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class CreateGroupLinster extends StatelessWidget {
+  const CreateGroupLinster({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState>(
+    return BlocListener<CreatGroupCubit, CreatGroupState>(
       listenWhen: (previous, current) =>
           current is Loading || current is Success || current is Error,
       listener: (context, state) {
@@ -31,7 +30,7 @@ class LoginBlocListener extends StatelessWidget {
           },
           success: (loginResponse) async {
             context.pop();
-            context.pushReplacementNamed(homeScreen);
+            context.pushReplacementNamed(allGroupScreen);
           },
           error: (error) {
             showDialog(

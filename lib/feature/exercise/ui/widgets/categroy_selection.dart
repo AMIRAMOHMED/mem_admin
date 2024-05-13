@@ -24,7 +24,7 @@ class _CategorySelectionState extends State<CategorySelection> {
       alignment: Alignment.topRight,
       child: Container(
         color: AppPallete.white,
-        height: 180.h,
+        height: 200.h,
         child: Column(
           children: [
             ListTile(

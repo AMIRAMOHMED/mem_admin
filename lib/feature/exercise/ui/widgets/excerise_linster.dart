@@ -5,16 +5,15 @@ import 'package:mem_admain/core/extension/context_extension.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
-import 'package:mem_admain/feature/login/logic/login_cubit/login_state.dart';
+import 'package:mem_admain/feature/exercise/logic/create/create_exercise_cubit.dart';
+import 'package:mem_admain/feature/exercise/logic/create/create_exercise_states.dart';
 
-import '../../logic/login_cubit/login_cubit.dart';
-
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class ExceriseLinster extends StatelessWidget {
+  const ExceriseLinster({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState>(
+    return BlocListener<CreateExerciseCubit, CreateExerciseStates>(
       listenWhen: (previous, current) =>
           current is Loading || current is Success || current is Error,
       listener: (context, state) {
@@ -31,7 +30,7 @@ class LoginBlocListener extends StatelessWidget {
           },
           success: (loginResponse) async {
             context.pop();
-            context.pushReplacementNamed(homeScreen);
+            context.pushReplacementNamed(allExerciseScreen);
           },
           error: (error) {
             showDialog(

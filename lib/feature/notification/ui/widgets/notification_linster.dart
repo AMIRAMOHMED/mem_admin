@@ -5,16 +5,15 @@ import 'package:mem_admain/core/extension/context_extension.dart';
 import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
-import 'package:mem_admain/feature/login/logic/login_cubit/login_state.dart';
+import 'package:mem_admain/feature/notification/logic/create%20notification%20cubit/notfication_cubit.dart';
+import 'package:mem_admain/feature/notification/logic/create%20notification%20cubit/notfication_state.dart';
 
-import '../../logic/login_cubit/login_cubit.dart';
-
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class NotificationLinster extends StatelessWidget {
+  const NotificationLinster({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState>(
+    return BlocListener<NotficationCubit, NotficationState>(
       listenWhen: (previous, current) =>
           current is Loading || current is Success || current is Error,
       listener: (context, state) {
@@ -29,9 +28,9 @@ class LoginBlocListener extends StatelessWidget {
               ),
             );
           },
-          success: (loginResponse) async {
+          sucess: (loginResponse) async {
             context.pop();
-            context.pushReplacementNamed(homeScreen);
+            context.pushReplacementNamed(allNotificationScreen);
           },
           error: (error) {
             showDialog(

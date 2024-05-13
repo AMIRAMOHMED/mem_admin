@@ -11,13 +11,13 @@ import 'package:mem_admain/core/widgets/user_selection_box.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
 import 'package:mem_admain/feature/exercise/ui/widgets/custom_alert_dialog.dart';
 import 'package:mem_admain/feature/meetings/logic/creat%20meeting%20cubit/creat_meeting_cubit.dart';
-import 'package:mem_admain/feature/meetings/logic/get%20all%20meeting%20cubit/get_all_meeting_cubit.dart';
 import 'package:mem_admain/feature/meetings/ui/widgets/hour_pick.dart';
 
 import '../widgets/data_pick.dart';
+import '../widgets/meeting_linster.dart';
 
 class MeetingScreen extends StatefulWidget {
-  const MeetingScreen({Key? key}) : super(key: key);
+  const MeetingScreen({super.key});
 
   @override
   State<MeetingScreen> createState() => _MeetingScreenState();
@@ -144,8 +144,6 @@ class _MeetingScreenState extends State<MeetingScreen> {
                           _validURL) {
                         context.read<CreatMeetingCubit>().emitCreatMeetingState(
                             context, pickedData, selectedTime);
-
-                        context.pushReplacementNamed(allMeetingScreen);
                       } else {
                         showDialog(
                           context: context,
@@ -157,6 +155,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                   SizedBox(
                     height: 30.h,
                   ),
+                  const MeetingLinster()
                 ],
               ),
             ),
