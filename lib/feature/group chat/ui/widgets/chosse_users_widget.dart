@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
-import 'package:mem_admain/feature/group%20chat/data/models/get_all_User.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/get_all_user.dart';
 import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_user_cubit.dart';
 import 'package:mem_admain/feature/group%20chat/logic/All%20Users%20Cubit/all_user_state.dart';
 
@@ -45,11 +45,11 @@ class _ChooseUsersState extends State<ChooseUsers> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: user.firstName!,
+                          text: user.firstName,
                           style: AppStyles.font20Black(context),
                         ),
                         TextSpan(
-                          text: ' (${getUserTypeLabel(user.type!)})',
+                          text: ' (${getUserTypeLabel(user.type)})',
                           style: AppStyles.font16LightGray(context),
                         ),
                       ],

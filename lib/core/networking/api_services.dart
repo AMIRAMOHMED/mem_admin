@@ -6,7 +6,7 @@ import 'package:mem_admain/feature/exercise/data/models/exercise_model.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/creat_group_request_body.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/creat_group_response_body.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/delet_group_response_body.dart';
-import 'package:mem_admain/feature/group%20chat/data/models/get_all_User.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/get_all_user.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/get_all_groups_response.dart';
 import 'package:mem_admain/feature/group%20chat/data/models/message%20model/message_model.dart';
 import 'package:mem_admain/feature/login/data/models/token_vaildate_response_body.dart';

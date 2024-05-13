@@ -1,8 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:json_annotation/json_annotation.dart';
-
-part 'get_all_User.g.dart';
-
+part 'get_all_user.g.dart';
 @JsonSerializable()
 class GetAllUserResponse {
   final String id;

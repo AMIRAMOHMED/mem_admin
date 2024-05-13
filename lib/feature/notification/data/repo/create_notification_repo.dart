@@ -8,7 +8,7 @@ import 'package:mem_admain/feature/notification/data/models/notification_respons
 
 class NotificationRepo{
 
-  ApiService _apiService;
+  final ApiService _apiService;
   NotificationRepo(this._apiService);
 
 
@@ -20,7 +20,6 @@ Future<ApiResult<NotificationResponseBody>> createNotificationrepo(
 ) async {
   try{
   final reponse =await _apiService.createNotification(token, notificationRequestModel);
-  print(token);
   return ApiResult.success(reponse);
   }
   catch(error){
