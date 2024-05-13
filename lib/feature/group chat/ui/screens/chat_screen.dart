@@ -62,8 +62,6 @@ class _ChatScreenState extends State<ChatScreen> {
         print('Socket connection error: $error');
       });
 
-      socket!.connect();
-
       socket!.on("message", (data) {
         print("Message received: $data");
         final message = data[1];
@@ -72,6 +70,13 @@ class _ChatScreenState extends State<ChatScreen> {
           messagesList.add(messageModel);
         });
       });
+
+      socket!.on("connect", (_) {
+        print('Socket connected');
+        socket!.emit("joinRooms");
+      });
+
+      socket!.connect();
     } catch (e) {
       print(e);
     }
