@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mem_admain/core/extension/context_extension.dart';
 
 import 'package:mem_admain/core/extension/num_extension.dart';
+import 'package:mem_admain/core/routing/model_route.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:mem_admain/core/widgets/sub_title_widget.dart';
@@ -56,6 +58,7 @@ class ExerciseDetailsItem extends StatelessWidget {
                   color: Colors.red,
                   onPressed: () {
                     context.read<ExerciseCubit>().deleteExercise(exercise.id);
+                    context.pushNamedAndRemoveUntil(homeScreen);
                   }),
             ),
           ],
