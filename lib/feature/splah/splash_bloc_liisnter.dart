@@ -29,6 +29,7 @@ class SplashBlocListener extends StatelessWidget {
           },
           success: (loginResponse) async {
             context.pop();
+            t,
             context.pushReplacementNamed(homeScreen);
           },
           error: (error) {
