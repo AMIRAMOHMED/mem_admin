@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mem_admain/core/constant/assets.dart';
+import 'package:mem_admain/core/extension/num_extension.dart';
 import 'package:mem_admain/core/networking/dio_factroy.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref.dart';
 import 'package:mem_admain/core/sharedpre/shared_pref_key.dart';
@@ -42,8 +43,6 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     connect();
-    print(userId);
-    _scrollToBottom();
   }
 
   void connect() {
@@ -92,8 +91,8 @@ class _ChatScreenState extends State<ChatScreen> {
   void _scrollToBottom() {
     if (_controller.hasClients) {
       _controller.animateTo(
-        _controller.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 100),
+        0,
+        duration: const Duration(milliseconds: 500),
         curve: Curves.easeOut,
       );
     }
@@ -115,7 +114,8 @@ class _ChatScreenState extends State<ChatScreen> {
         children: [
           Expanded(
             child: StreamBuilder<List<MessageModel>>(
-              stream: getMessagesStream(),
+              stream: getMessagesStream().map((list) =>
+                  list..sort((a, b) => b.createdAt.compareTo(a.createdAt))),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
@@ -128,11 +128,11 @@ class _ChatScreenState extends State<ChatScreen> {
                 final messagesList = snapshot.data!;
 
                 return ListView.builder(
+                  reverse: true,
                   controller: _controller,
                   itemCount: messagesList.length,
                   itemBuilder: (context, index) {
                     final message = messagesList[index];
-
                     return userId == messagesList[index].senderId
                         ? ChatBubble(message: message)
                         : ChatBubleForOther(message: message);
