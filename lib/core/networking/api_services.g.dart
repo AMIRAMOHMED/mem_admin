@@ -298,14 +298,14 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<List<InvalidType>> getAllUrser(String token) async {
+  Future<List<GetAllUserResponse>> getAllUrser(String token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<InvalidType>>(Options(
+        .fetch<List<dynamic>>(_setStreamType<List<GetAllUserResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -322,7 +322,8 @@ class _ApiService implements ApiService {
               baseUrl,
             ))));
     var value = _result.data!
-        .map((dynamic i) => InvalidType.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) =>
+            GetAllUserResponse.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }

@@ -1,7 +1,7 @@
 
 import 'package:mem_admain/core/networking/api_error_handler.dart';
 import 'package:mem_admain/core/networking/api_result.dart';
-import 'package:mem_admain/feature/group%20chat/data/models/get_all_user.dart';
+import 'package:mem_admain/feature/group%20chat/data/models/get_all_User.dart';
 
 import '../../../../core/networking/api_services.dart';
 
