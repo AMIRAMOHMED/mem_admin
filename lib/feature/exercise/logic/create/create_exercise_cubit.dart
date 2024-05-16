@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,8 +19,26 @@ class CreateExerciseCubit extends Cubit<CreateExerciseStates> {
 
   File? imageFile;
 
+  Future<PermissionStatus> requestPermission() async {
+    PermissionStatus newPermReq;
+
+    final deviceInfo = DeviceInfoPlugin();
+    if (Platform.isAndroid) {
+      final androidInfo = await deviceInfo.androidInfo;
+      final androidSdkInt = androidInfo.version.sdkInt;
+      if (androidSdkInt < 33) {
+        newPermReq = await Permission.storage.request();
+      } else {
+        newPermReq = await Permission.videos.request();
+      }
+    } else {
+      newPermReq = await Permission.videos.request();
+    }
+    return newPermReq;
+  }
+
   Future<void> pickImage(BuildContext context) async {
-    final status = await Permission.videos.request();
+    final status = await requestPermission();
     if (status.isGranted) {
       final image = await ImagePicker().pickVideo(source: ImageSource.gallery);
       if (image != null) {
