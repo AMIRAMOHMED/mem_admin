@@ -32,7 +32,7 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppbarWidget(
-          text: ("اضافة تمارين"),
+          text: ("إضافة تمرين"),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -57,7 +57,7 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                   const Padding(
                     padding: EdgeInsets.only(right: 30),
                     child: SubTitleWidget(
-                      text: 'انشاء تمرين',
+                      text: 'إنشاء تمرين',
                     ),
                   ),
                   SizedBox(
@@ -92,7 +92,7 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                                 filled: true,
                                 fillColor: AppPallete.white,
                                 hintStyle: AppStyles.font13Black(context),
-                                hintText: 'ادخل اسم التمرين',
+                                hintText: 'أدخل اسم التمرين',
                               ),
                             ),
                             SizedBox(
@@ -112,7 +112,7 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                                 filled: true,
                                 fillColor: AppPallete.white,
                                 hintStyle: AppStyles.font13Black(context),
-                                hintText: 'ادخل وصف التمرين',
+                                hintText: 'أدخل وصف التمرين',
                               ),
                             ),
                             SizedBox(
@@ -149,7 +149,7 @@ class _CreatExceriseScreenState extends State<CreatExceriseScreen> {
                               height: 40.h,
                             ),
                             AppTextButton(
-                                buttonText: "أضافة التمرين",
+                                buttonText: "إضافة التمرين",
                                 buttonWidth: 100.w,
                                 backgroundColor: AppPallete.white,
                                 verticalPadding: 0,

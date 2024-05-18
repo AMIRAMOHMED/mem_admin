@@ -25,7 +25,7 @@ class PickVideoWidget extends StatelessWidget {
                     ),
                     child: const Center(
                       child: Text(
-                        "اختار فيديو",
+                        "اختر فيديو",
                         style: TextStyle(
                             fontSize: 16, color: AppPallete.borderColor),
                       ),

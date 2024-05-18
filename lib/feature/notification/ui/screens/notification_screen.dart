@@ -36,7 +36,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       child: Scaffold(
         appBar: AppbarWidget(
           backArrow: true,
-          text: 'الاشعارات',
+          text: 'الإشعارات',
         ),
         body: Center(
           child: Column(
@@ -46,7 +46,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 buttonHeight: 80.h,
                 borderRadius: 40,
                 backgroundColor: AppPallete.lightOrange,
-                buttonText: " عرض جميع الاشعارات ",
+                buttonText: " عرض جميع الإشعارات ",
                 textStyle: AppStyles.font20Black(context),
                 onPressed: () {
                   context.pushReplacementNamed(allNotificationScreen);
@@ -58,7 +58,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               const Padding(
                 padding: EdgeInsets.only(right: 30),
                 child: SubTitleWidget(
-                  text: 'انشاء اشعار',
+                  text: 'إنشاء إشعار',
                 ),
               ),
               SizedBox(
@@ -81,7 +81,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           height: 15.h,
                         ),
                         const SubTitleWidget(
-                          text: "محتوي الاشعار",
+                          text: " : محتوى الإشعار",
                         ),
                         SizedBox(
                           height: 15.h,
@@ -94,14 +94,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             filled: true,
                             fillColor: AppPallete.white,
                             hintStyle: AppStyles.font13Black(context),
-                            hintText: 'ادخل محتوي الاشعار',
+                            hintText: 'أدخل محتوى الإشعار',
                           ),
                         ),
                         SizedBox(
                           height: 15.h,
                         ),
                         const SubTitleWidget(
-                          text: "اختيار المستهدف",
+                          text: " : الفئة المستهدفة",
                         ),
                         SizedBox(
                           height: 15.h,
@@ -114,7 +114,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           height: 40.h,
                         ),
                         AppTextButton(
-                          buttonText: "أضافة الاشعار",
+                          buttonText: "إرسال",
                           buttonWidth: 100.w,
                           backgroundColor: AppPallete.white,
                           verticalPadding: 0,
@@ -127,8 +127,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               context
                                   .read<NotficationCubit>()
                                   .emitCreatNotificationState(context);
-
-                              
                             } else {
                               showDialog(
                                 context: context,

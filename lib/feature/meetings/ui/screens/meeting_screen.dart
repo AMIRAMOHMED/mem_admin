@@ -43,7 +43,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppbarWidget(
-          text: 'القوائم',
+          text: 'الإجتماعات',
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -89,7 +89,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                       filled: true,
                       fillColor: AppPallete.white,
                       hintStyle: AppStyles.font13Black(context),
-                      hintText: 'ادخل اسم  الاجتماع',
+                      hintText: 'أدخل اسم  الاجتماع',
                     ),
                   ),
                   SizedBox(
@@ -119,7 +119,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                   SizedBox(
                     height: 15.h,
                   ),
-                  const SubTitleWidget(text: "اختيار المستهدف"),
+                  const SubTitleWidget(text: "اختر الفئة المستهدفة"),
                   SizedBox(
                     height: 15.h,
                   ),
@@ -134,7 +134,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                     buttonHeight: 80.h,
                     borderRadius: 40,
                     backgroundColor: AppPallete.lightPastelBlue,
-                    buttonText: "ارسال الموعد",
+                    buttonText: "إرسال الموعد",
                     textStyle: AppStyles.font20Black(context),
                     onPressed: () {
                       if (meetingName.text.isNotEmpty &&

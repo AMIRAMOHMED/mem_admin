@@ -22,7 +22,7 @@ class MeetingItem extends StatelessWidget {
     } else if (forWho == 'STUTTERER') {
       return 'متعثلمين فقط';
     } else {
-      return 'ذوي صله';
+      return ' ذوي صلة فقط';
     }
   }
 
@@ -33,7 +33,7 @@ class MeetingItem extends StatelessWidget {
     final year = dateTimeObj.year;
     final hour = dateTimeObj.hour;
     final minute = dateTimeObj.minute;
-    final amPm = hour < 12 ? 'صباحا' : 'مساءا';
+    final amPm = hour < 12 ? 'ًصباحا' : 'ًمساءا';
     final hour12 = hour % 12;
 
     return '$day-$month-$year\n$amPm $hour12:$minute';
@@ -73,7 +73,7 @@ class MeetingItem extends StatelessWidget {
           ),
           ContentMeetingItem(
             text2: convertDatetimeStr("${allMeetings.dateTime}"),
-            text1: '  :الوقت',
+            text1: '  : الوقت',
           ),
           Align(
             alignment: Alignment.topLeft,

@@ -16,7 +16,7 @@ class AllNotificationScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppbarWidget(
-          text: 'جميع الاشعارات',
+          text: 'جميع الإشعارات',
         ),
         body: StreamBuilder<List<GetAllNotificationResponse>>(
           stream: getAllNotification.allNotificationsStream,
@@ -29,14 +29,14 @@ class AllNotificationScreen extends StatelessWidget {
               return Center(
                 child: Text(
                   'Error: ${snapshot.error}',
-                 
                 ),
               );
             } else {
               final allNotificationsList = snapshot.data;
-              if (allNotificationsList == null || allNotificationsList.isEmpty) {
+              if (allNotificationsList == null ||
+                  allNotificationsList.isEmpty) {
                 return const Center(
-                  child: Text('لا يوجد اشعارات'),
+                  child: Text('لا يوجد إشعارات'),
                 );
               } else {
                 return CustomScrollView(
@@ -44,7 +44,9 @@ class AllNotificationScreen extends StatelessWidget {
                     SliverToBoxAdapter(
                       child: ListView.separated(
                         itemBuilder: (context, index) {
-                          return  NotificationItem(notification: allNotificationsList[index],);
+                          return NotificationItem(
+                            notification: allNotificationsList[index],
+                          );
                         },
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,

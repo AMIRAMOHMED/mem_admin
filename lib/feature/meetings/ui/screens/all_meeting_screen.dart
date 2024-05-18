@@ -17,7 +17,7 @@ class AllMeetingScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppbarWidget(
-        text: 'جميع الاجتماعات',
+        text: 'جميع الإجتماعات',
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -35,9 +35,12 @@ class AllMeetingScreen extends StatelessWidget {
                 } else {
                   final allMeetingsList = snapshot.data;
                   if (allMeetingsList == null || allMeetingsList.isEmpty) {
-                    return  Center(
-                  child: Text('لا يوجد اجتماعات',style: AppStyles.font20Black(context),),
-                );
+                    return Center(
+                      child: Text(
+                        'لا يوجد إجتماعات',
+                        style: AppStyles.font20Black(context),
+                      ),
+                    );
                   } else {
                     return ListView.builder(
                       shrinkWrap: true,

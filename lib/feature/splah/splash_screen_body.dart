@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:mem_admain/core/constant/assets.dart';
 import 'package:mem_admain/core/extension/num_extension.dart';
 import 'package:mem_admain/core/theme/app_pallete.dart';
 import 'package:mem_admain/core/theme/app_style.dart';
 import 'package:lottie/lottie.dart';
-
 
 class SplashScreenBody extends StatelessWidget {
   const SplashScreenBody({
@@ -39,7 +37,7 @@ class SplashScreenBody extends StatelessWidget {
                 top: 80.h,
                 child: Text(
                   textAlign: TextAlign.center,
-                  "اهلا بك \nفي مجتمع ميم",
+                  "اهلاً بك \nفي مجتمع ميم",
                   style: AppStyles.font32BoldWhite(context),
                 ),
               )
@@ -49,6 +47,4 @@ class SplashScreenBody extends StatelessWidget {
       ),
     );
   }
-
-  
 }

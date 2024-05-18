@@ -17,7 +17,7 @@ class NotificationItem extends StatelessWidget {
     } else if (forWho == 'STUTTERER') {
       return 'متعثلمين فقط';
     } else {
-      return 'ذوي صله';
+      return ' ذوي صلة ';
     }
   }
 
@@ -39,12 +39,12 @@ class NotificationItem extends StatelessWidget {
               height: 10.h,
             ),
             DetailsOfNotificationItem(
-                text1: '  :محتوي الاشعار', text2: notification.message),
+                text1: '  : محتوى الإشعار', text2: notification.message),
             SizedBox(
               height: 10.h,
             ),
             DetailsOfNotificationItem(
-              text1: '  :استهداف الاشعار',
+              text1: ' : الفئة المستهدفة',
               text2: convertForWho(notification.forWho),
             ),
             Row(

@@ -29,7 +29,7 @@ class _CategorySelectionState extends State<CategorySelection> {
           children: [
             ListTile(
               title: Text(
-                "تنفس",
+                " تنفس واسترخاء",
                 style: AppStyles.font16Black(context),
               ),
               leading: SizedBox(
@@ -71,7 +71,7 @@ class _CategorySelectionState extends State<CategorySelection> {
             ),
             ListTile(
               title: Text(
-                "استرخاء",
+                "النطق",
                 style: AppStyles.font16Black(context),
               ),
               leading: SizedBox(

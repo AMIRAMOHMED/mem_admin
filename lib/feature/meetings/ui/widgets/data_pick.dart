@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -17,14 +16,13 @@ class PickTime extends StatefulWidget {
 
 class _PickTimeState extends State<PickTime> {
   String _selectedDate = '';
-    String _selectedDateCubit = '';
-
+  String _selectedDateCubit = '';
 
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
     setState(() {
       if (args.value is DateTime) {
         _selectedDate = DateFormat('dd/MM/yyyy').format(args.value);
-        _selectedDateCubit=args.value.toString();
+        _selectedDateCubit = args.value.toString();
 
         widget.onPickedData(_selectedDateCubit);
       }
@@ -52,7 +50,7 @@ class _PickTimeState extends State<PickTime> {
                   alignment: Alignment.topRight,
                   child: Text(
                     _selectedDate.isEmpty
-                        ? ' اختار يوم الاجتماع '
+                        ? ' اختر يوم الاجتماع '
                         : "تم تحديد التاريخ: $_selectedDate",
                     style: AppStyles.font20Black(context),
                   ),

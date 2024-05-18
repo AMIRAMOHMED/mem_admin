@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(120.h),
           child: AppbarWidget(
-            text: "الصفحه الرئيسه",
+            text: "الصفحة الرئيسية",
             backArrow: false,
           ),
         ),
@@ -35,7 +35,8 @@ class HomeScreen extends StatelessWidget {
                 text: "التمارين",
                 color: AppPallete.lightBlueColor,
                 color2: AppPallete.blue,
-                onTap: () {context.pushName(creatExceriseScreen);
+                onTap: () {
+                  context.pushName(creatExceriseScreen);
                 },
               ),
               SizedBox(
@@ -54,7 +55,7 @@ class HomeScreen extends StatelessWidget {
               ),
               CustomHomeItem(
                 color2: AppPallete.pastelBlue,
-                text: "القوائم",
+                text: "الإجتماعات",
                 color: AppPallete.lightPastelBlue,
                 onTap: () {
                   context.pushName(meetingScreen);
@@ -65,7 +66,7 @@ class HomeScreen extends StatelessWidget {
               ),
               CustomHomeItem(
                 color2: AppPallete.lightOrange,
-                text: "الاشعارات",
+                text: "الإشعارات",
                 color: AppPallete.organgeColor,
                 onTap: () {
                   context.pushName(notificationScreen);

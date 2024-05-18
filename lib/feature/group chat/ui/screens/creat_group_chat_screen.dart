@@ -55,7 +55,7 @@ class _CreateGroupChatScreenState extends State<CreateGroupChatScreen> {
               const Padding(
                 padding: EdgeInsets.only(right: 30),
                 child: SubTitleWidget(
-                  text: 'انشاء مجموعة',
+                  text: 'إنشاء مجموعة',
                 ),
               ),
               SizedBox(
@@ -90,14 +90,14 @@ class _CreateGroupChatScreenState extends State<CreateGroupChatScreen> {
                             filled: true,
                             fillColor: AppPallete.white,
                             hintStyle: AppStyles.font13Black(context),
-                            hintText: 'ادخل اسم المجموعة',
+                            hintText: 'أدخل اسم المجموعة',
                           ),
                         ),
                         SizedBox(
                           height: 15.h,
                         ),
                         const SubTitleWidget(
-                          text: "اختيار اعضاء المجموعة",
+                          text: "اختير اعضاء المجموعة",
                         ),
                         SizedBox(
                           height: 15.h,
@@ -111,7 +111,7 @@ class _CreateGroupChatScreenState extends State<CreateGroupChatScreen> {
                           height: 40.h,
                         ),
                         AppTextButton(
-                            buttonText: "أضافة المجموعة",
+                            buttonText: "إضافة المجموعة",
                             buttonWidth: 150.w,
                             backgroundColor: AppPallete.white,
                             verticalPadding: 0,

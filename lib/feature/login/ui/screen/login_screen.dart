@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 100.h,
                   ),
                   Text(
-                    "مرحبا بك",
+                    "مرحباً بك",
                     style: AppStyles.font40Black(context),
                   ),
                   SizedBox(
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintStyle: AppStyles.font16LightGray(context),
-                      hintText: 'البريد الالكتروني ',
+                      hintText: 'البريد الإلكتروني ',
                     ),
                   ),
                   SizedBox(

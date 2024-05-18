@@ -37,7 +37,7 @@ class NotificationLinster extends StatelessWidget {
               context: context,
               builder: (context) => AlertDialog(
                 title: Text(
-                  'برجاء ادخال جميع البيانات بشكل صحيح',
+                  'رجاءاً ادخل جميع البيانات بشكل صحيح',
                   style: AppStyles.font20Black(context),
                   textAlign: TextAlign.center,
                 ),

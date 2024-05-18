@@ -14,7 +14,6 @@ class AllGroupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("المجموعات"),
@@ -36,8 +35,11 @@ class AllGroupScreen extends StatelessWidget {
                   final allGroupsList = snapshot.data;
                   if (allGroupsList == null || allGroupsList.isEmpty) {
                     return Center(
-                  child: Text('لا يوجد مجموعات',style: AppStyles.font20Black(context),),
-                );
+                      child: Text(
+                        'لا يوجد مجموعات',
+                        style: AppStyles.font20Black(context),
+                      ),
+                    );
                   } else {
                     return ListView.builder(
                       shrinkWrap: true,
@@ -46,8 +48,11 @@ class AllGroupScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(onTap: (){ context.pushReplacementNamed(chatScreen, arguments: allGroupsList[index]);                       
-},
+                          child: GestureDetector(
+                            onTap: () {
+                              context.pushReplacementNamed(chatScreen,
+                                  arguments: allGroupsList[index]);
+                            },
                             child: GroupChatItem(
                               allGroups: allGroupsList[index],
                             ),
